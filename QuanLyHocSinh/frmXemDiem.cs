@@ -116,5 +116,15 @@ namespace QuanLyHocSinh
         {
             btnHienThiDanhSach_Click(sender, e);
         }
+
+        private void lvXemDiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void navPanelNhapDuLieu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

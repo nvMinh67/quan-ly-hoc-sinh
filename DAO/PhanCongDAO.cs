@@ -32,12 +32,40 @@ namespace DAO
 
         public void ThemPhanCong(PhanCongDTO PhanCong)
         {
-            string query = "EXEC ThemPhanCong @maNamHoc , @maLop , @maMonHoc , @maGiaoVien";
-            object[] parameters = new object[] {
-                PhanCong.MaNamHoc, PhanCong.MaLop, PhanCong.MaMonHoc, PhanCong.MaGiaoVien
+                    string query = "EXEC ThemPhanCong @maNamHoc , @maLop , @maMonHoc , @maGiaoVien";
+                    object[] parameters = new object[] {
+                        PhanCong.MaNamHoc, PhanCong.MaLop, PhanCong.MaMonHoc, PhanCong.MaGiaoVien
+                    };
+                    DataProvider.Instance.ExecuteNonQuery(query, parameters);
+                }
+                public string ThemPhanCongCheck(PhanCongDTO phanCong)
+                {
+                    string checkQuery = @"
+                        SELECT COUNT(*) 
+                        FROM PhanCong 
+                        WHERE MaNamHoc = @maNamHoc 
+                          AND MaLop = @maLop 
+                          AND MaMonHoc = @maMonHoc";
+
+                    object[] checkParams = new object[] {
+                phanCong.MaNamHoc, phanCong.MaLop, phanCong.MaMonHoc
             };
-            DataProvider.Instance.ExecuteNonQuery(query, parameters);
-        }
+
+                    int count = (int)DataProvider.Instance.ExecuteScalar(checkQuery, checkParams);
+
+                    if (count > 0)
+                    {
+                        return "Phân công này đã tồn tại!";
+                    }
+
+                    string insertQuery = "EXEC ThemPhanCong @maNamHoc , @maLop , @maMonHoc , @maGiaoVien";
+                    object[] insertParams = new object[] {
+                phanCong.MaNamHoc, phanCong.MaLop, phanCong.MaMonHoc, phanCong.MaGiaoVien
+            };
+
+                    DataProvider.Instance.ExecuteNonQuery(insertQuery, insertParams);
+                    return "Thêm phân công thành công!";
+                }
 
         public DataTable TimTheoTenLop(string tenLop)
         {

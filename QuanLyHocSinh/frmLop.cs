@@ -1,15 +1,17 @@
-﻿using DevComponents.DotNetBar;
+﻿using BUS;
+using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
+using DTO;
+using QuanLyHocSinh.WCFProxy1;
 using System;
 using System.Data;
 using System.Windows.Forms;
-using BUS;
-using DTO;
-
 namespace QuanLyHocSinh
 {
     public partial class frmLop : Office2007Form
     {
-
+        BindingSource bindingSource = new BindingSource();
+        DataGridView dataGridViewX = new DataGridView();
         public frmLop()
         {
             InitializeComponent();
@@ -120,36 +122,65 @@ namespace QuanLyHocSinh
         private void btnLuuVaoDS_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtMaLop.Text) ||
-                string.IsNullOrWhiteSpace(txtTenLop.Text)  ||
+                string.IsNullOrWhiteSpace(txtTenLop.Text) ||
                 cmbKhoiLop.SelectedValue == null ||
                 cmbNamHoc.SelectedValue == null ||
-                cmbGiaoVien.SelectedValue == null ||
-                !QuyDinhBUS.Instance.KiemTraSiSo(iniSiSo.Value))
-                MessageBox.Show(
-                    "Giá trị của các ô không được rỗng và sỉ số phải theo quy định !", 
-                    "ERROR", 
-                    MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error
-                );
-            else
-            {
+                cmbGiaoVien.SelectedValue == null)
+                    {
+                        MessageBox.Show(
+                            "Giá trị của các ô không được rỗng!",
+                            "ERROR",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        return;
+                    }
+
                 LopDTO lop = new LopDTO(
-                    txtMaLop.Text, 
+                    txtMaLop.Text,
                     txtTenLop.Text,
                     cmbKhoiLop.SelectedValue.ToString(),
-                    cmbNamHoc.SelectedValue.ToString(), 
+                    cmbNamHoc.SelectedValue.ToString(),
                     iniSiSo.Value,
                     cmbGiaoVien.SelectedValue.ToString()
                 );
-                LopBUS.Instance.ThemLop(lop);
-                bindingNavigatorRefreshItem_Click(sender, e);
-            }
+
+                using (var client = new QuanLyServiceClient())
+                {
+                    if (!client.ThemLopHoc(lop))
+                    {
+                        MessageBox.Show("Sĩ số không nằm trong giới hạn quy định!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    MessageBox.Show("Thêm lớp thành công!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bindingNavigatorRefreshItem_Click(sender, e);
+                }
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            if (chkTimTheoMa.Checked) LopBUS.Instance.TimTheoMa(txtTimKiem.Text);
-            else LopBUS.Instance.TimTheoTen(txtTimKiem.Text);
+          
+                using (var client = new QuanLyServiceClient())
+                {
+
+                var result = chkTimTheoMa.Checked
+                    ? client.TimLopTheoMa(txtTimKiem.Text)
+                    : client.TimLopTheoTen(txtTimKiem.Text);
+
+                bindingSource.DataSource = result;
+                dgvLop.DataSource = bindingSource;
+            }
+            
+           
+           
+            
+        }
+
+
+        private void dgvLop_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

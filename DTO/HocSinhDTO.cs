@@ -1,21 +1,35 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace DTO
 {
+    [DataContract]
     public class HocSinhDTO
     {
-        private string maHocSinh;
-        private string hoTen;
-        bool gioiTinh;
-        private DateTime ngaySinh; 
-        private string diaChi; 
-        private string maDanToc; 
-        private string maTonGiao; 
-        private string hoTenCha; 
-        private string maNgheCha; 
-        private string hoTenMe;
-        private string maNgheMe;
-        private string email;
+        [DataMember]
+        public string maHocSinh;
+        [DataMember]
+        public string hoTen;
+        [DataMember]
+        public bool gioiTinh;
+        [DataMember]
+        public DateTime ngaySinh;
+        [DataMember]
+        public string diaChi;
+        [DataMember]
+        public string maDanToc;
+        [DataMember]
+        public string maTonGiao;
+        [DataMember]
+        public string hoTenCha;
+        [DataMember]
+        public string maNgheCha;
+        [DataMember]
+        public string hoTenMe;
+        [DataMember]
+        public string maNgheMe;
+        [DataMember]
+        public string email;
 
         public HocSinhDTO() { }
         public HocSinhDTO(

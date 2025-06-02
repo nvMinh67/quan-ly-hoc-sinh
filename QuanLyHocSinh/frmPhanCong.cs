@@ -1,9 +1,11 @@
 ﻿using BUS;
 using DevComponents.DotNetBar;
 using DTO;
+using QuanLyHocSinh.WCFProxy1;
 using System;
 using System.Data;
 using System.Windows.Forms;
+
 
 namespace QuanLyHocSinh
 {
@@ -74,21 +76,38 @@ namespace QuanLyHocSinh
             ) bindingNavigatorPhanCong.BindingSource.RemoveCurrent();
         }
 
+        //private void bindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        //{
+        //    string[] colNames = { "colMaNamHoc", "colMaLop", "colMaMonHoc", "colMaGiaoVien" };
+        //    if (KiemTraTruocKhiLuu.KiemTraDataGridView(dgvPhanCong, colNames))
+        //    {
+        //        bindingNavigatorPositionItem.Focus();
+        //        BindingSource bindingSource = bindingNavigatorPhanCong.BindingSource;
+        //        PhanCongBUS.Instance.CapNhatPhanCong((DataTable)bindingSource.DataSource);
+
+        //        MessageBox.Show(
+        //            "Dữ liệu đã được lưu vào CSDL",
+        //            "Cập nhật thành công",
+        //            MessageBoxButtons.OK,
+        //            MessageBoxIcon.Information
+        //        );
+        //    }
+        //}
         private void bindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            string[] colNames = { "colMaNamHoc", "colMaLop", "colMaMonHoc", "colMaGiaoVien" };
-            if (KiemTraTruocKhiLuu.KiemTraDataGridView(dgvPhanCong, colNames))
-            {
-                bindingNavigatorPositionItem.Focus();
-                BindingSource bindingSource = bindingNavigatorPhanCong.BindingSource;
-                PhanCongBUS.Instance.CapNhatPhanCong((DataTable)bindingSource.DataSource);
+            BindingSource bindingSource = bindingNavigatorPhanCong.BindingSource;
+            DataTable dt = (DataTable)bindingSource.DataSource;
+            dt.TableName = "PHANCONG"; // Đặt tên bất kỳ, miễn không để trống
+            var client = new QuanLyServiceClient();
+            bool ketQua = client.LuuPhanCong(dt);
 
-                MessageBox.Show(
-                    "Dữ liệu đã được lưu vào CSDL",
-                    "Cập nhật thành công",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+            if (ketQua)
+            {
+                MessageBox.Show("Dữ liệu đã được lưu vào CSDL", "Cập nhật thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Lưu thất bại. Kiểm tra dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -129,25 +148,56 @@ namespace QuanLyHocSinh
             cmbLop.DataBindings.Clear();
         }
 
+        //private void btnLuuVaoDS_Click(object sender, EventArgs e)
+        //{
+        //    if (cmbNamHoc.SelectedValue == null || cmbLop.SelectedValue == null ||
+        //        cmbMonHoc.SelectedValue == null || cmbGiaoVien.SelectedValue == null)
+        //        MessageBox.Show(
+        //            "Giá trị của các ô không được rỗng !",
+        //            "ERROR",
+        //            MessageBoxButtons.OK,
+        //            MessageBoxIcon.Error
+        //        );
+        //    else
+        //    {
+        //        PhanCongDTO phanCong = new PhanCongDTO(
+        //            cmbNamHoc.SelectedValue.ToString(),
+        //            cmbLop.SelectedValue.ToString(),
+        //            cmbMonHoc.SelectedValue.ToString(),
+        //            cmbGiaoVien.SelectedValue.ToString()
+        //        );
+        //        PhanCongBUS.Instance.ThemPhanCong(phanCong);
+        //        bindingNavigatorRefreshItem_Click(sender, e);
+        //    }
+        //}
         private void btnLuuVaoDS_Click(object sender, EventArgs e)
         {
             if (cmbNamHoc.SelectedValue == null || cmbLop.SelectedValue == null ||
                 cmbMonHoc.SelectedValue == null || cmbGiaoVien.SelectedValue == null)
+            {
                 MessageBox.Show(
-                    "Giá trị của các ô không được rỗng !",
+                    "Giá trị của các ô không được rỗng!",
                     "ERROR",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
-            else
+                return;
+            }
+
+            var phanCong = new PhanCongDTO(
+                cmbNamHoc.SelectedValue.ToString(),
+                cmbLop.SelectedValue.ToString(),
+                cmbMonHoc.SelectedValue.ToString(),
+                cmbGiaoVien.SelectedValue.ToString()
+            );
+
+            var client = new QuanLyServiceClient();
+            string message = client.ThemPhanCongCheck(phanCong);
+
+            MessageBox.Show(message);
+
+            if (message == "Thêm phân công thành công!")
             {
-                PhanCongDTO phanCong = new PhanCongDTO(
-                    cmbNamHoc.SelectedValue.ToString(),
-                    cmbLop.SelectedValue.ToString(),
-                    cmbMonHoc.SelectedValue.ToString(),
-                    cmbGiaoVien.SelectedValue.ToString()
-                );
-                PhanCongBUS.Instance.ThemPhanCong(phanCong);
                 bindingNavigatorRefreshItem_Click(sender, e);
             }
         }
@@ -158,5 +208,9 @@ namespace QuanLyHocSinh
             else PhanCongBUS.Instance.TimTheoTenGiaoVien(txtTimKiem.Text);
         }
 
+        private void dgvPhanCong_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BUS;
 using DevComponents.DotNetBar;
 using DTO;
+using QuanLyHocSinh.WCFProxy1;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -95,30 +96,42 @@ namespace QuanLyHocSinh
             MonHocBUS.Instance.HienThiDgvCmbCol(colMaMonHoc);
         }
 
-        private void btnLuuVaoDS_Click(object sender, EventArgs e)
+       
+           private void btnLuuVaoDS_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTenGiaoVien.Text) ||
                 string.IsNullOrWhiteSpace(txtDiaChi.Text) ||
                 string.IsNullOrWhiteSpace(txtDienThoai.Text) ||
                 cmbMonHoc.SelectedValue == null)
+            {
                 MessageBox.Show(
                     "Giá trị của các ô không được rỗng !",
                     "ERROR",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
+            }
             else
             {
                 GiaoVienDTO giaoVien = new GiaoVienDTO(
-                    txtMaGiaoVien.Text, 
-                    txtTenGiaoVien.Text, 
-                    txtDiaChi.Text, 
-                    txtDienThoai.Text, 
+                    txtMaGiaoVien.Text,
+                    txtTenGiaoVien.Text,
+                    txtDiaChi.Text,
+                    txtDienThoai.Text,
                     cmbMonHoc.SelectedValue.ToString()
                 );
-                GiaoVienBUS.Instance.ThemGiaoVien(giaoVien);
-                bindingNavigatorRefreshItem_Click(sender, e);
-            }
+
+                // Gọi qua WCF
+                var client = new QuanLyServiceClient();
+                bool success = client.ThemGiaoVien(giaoVien);
+
+                if (success)
+                    bindingNavigatorRefreshItem_Click(sender, e);
+                else
+                    MessageBox.Show("Dữ liệu không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+        }
+
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)

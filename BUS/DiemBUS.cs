@@ -285,10 +285,18 @@ namespace BUS
         {
             DiemDAO.Instance.ThemDiem(diem);
         }
+        public void CapNhatDiem(DiemDTO diem)
+        {
+            DiemDAO.Instance.CapNhatDiem(diem);
+        }
 
         public void XoaDiem(int stt)
         {
             DiemDAO.Instance.XoaDiem(stt);
+        }
+        public void XoaDiemDaLuu(DiemDTO diem)
+        {
+            DiemDAO.Instance.xoaDiemDaLuu(diem);
         }
     }
 }

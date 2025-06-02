@@ -1,2 +1,34 @@
-.vs
-*/obj
+# Build directories
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code settings
+.vscode/
+.vs/
+
+# NuGet
+*.nupkg
+packages/
+
+# Logs
+*.log
+
+# DLL/EXE artifacts
+*.dll
+*.exe
+*.pdb
+
+# Publish output
+Releases/
+publish/
+
+# Others
+TestResults/
+*.dbmdl
+*.cache

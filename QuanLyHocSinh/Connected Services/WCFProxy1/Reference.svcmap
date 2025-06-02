@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="b03c96d6-6f07-49de-9bb4-0aad97c13b49" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8000/QuanLyService?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="QuanLyService4.xsd" MetadataType="Schema" ID="d0eb710d-034c-4409-90dc-d3d874c441cf" SourceId="1" SourceUrl="http://localhost:8000/QuanLyService?xsd=xsd4" />
+    <MetadataFile FileName="QuanLyService.xsd" MetadataType="Schema" ID="54ae1d76-a21c-4b4a-bb87-15b0fb853eee" SourceId="1" SourceUrl="http://localhost:8000/QuanLyService?xsd=xsd1" />
+    <MetadataFile FileName="QuanLyService1.xsd" MetadataType="Schema" ID="1430d2b4-37e1-4b36-9c7a-3ec3e7d99cc7" SourceId="1" SourceUrl="http://localhost:8000/QuanLyService?xsd=xsd2" />
+    <MetadataFile FileName="QuanLyService2.xsd" MetadataType="Schema" ID="3353f1a6-10f9-4252-9505-e760164df7d3" SourceId="1" SourceUrl="http://localhost:8000/QuanLyService?xsd=xsd0" />
+    <MetadataFile FileName="QuanLyService.wsdl" MetadataType="Wsdl" ID="fb9ce077-c0f0-42a2-bf36-f5ca9e43d981" SourceId="1" SourceUrl="http://localhost:8000/QuanLyService?wsdl" />
+    <MetadataFile FileName="QuanLyService3.xsd" MetadataType="Schema" ID="8cb3a37f-0267-4324-af46-8ef910b0fab6" SourceId="1" SourceUrl="http://localhost:8000/QuanLyService?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

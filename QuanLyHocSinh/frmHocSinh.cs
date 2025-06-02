@@ -1,7 +1,9 @@
 ﻿using BUS;
 using DevComponents.DotNetBar;
 using DTO;
+using QuanLyHocSinh.WCFProxy1;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -9,6 +11,7 @@ namespace QuanLyHocSinh
 {
     public partial class frmHocSinh : Office2007Form
     {
+        BindingSource bindingSource = new BindingSource();
         public frmHocSinh()
         {
             InitializeComponent();
@@ -46,9 +49,9 @@ namespace QuanLyHocSinh
             dataRow["MaDanToc"] = "";
             dataRow["MaTonGiao"] = "";
             dataRow["HoTenCha"] = "";
-            dataRow["MaNNghiepCha"] = "";
+            dataRow["MaNgheCha"] = "";
             dataRow["HoTenMe"] = "";
-            dataRow["MaNNghiepMe"] = "";
+            dataRow["MaNgheMe"] = "";
             dataRow["Email"] = "";
 
             dataTable.Rows.Add(dataRow);
@@ -149,10 +152,61 @@ namespace QuanLyHocSinh
             NgheNghiepBUS.Instance.HienThiDgvCmbColMe(colMaNgheMe);
         }
 
+        //private void btnLuuVaoDS_Click(object sender, EventArgs e)
+        //{
+        //    bool gioiTinh = false;
+        //    if (ckbGTinhNu.Checked) gioiTinh = true;
+
+        //    if (string.IsNullOrWhiteSpace(txtMaHocSinh.Text) ||
+        //        string.IsNullOrWhiteSpace(txtTenHocSinh.Text) ||
+        //        string.IsNullOrWhiteSpace(txtDiaChi.Text) ||
+        //        string.IsNullOrWhiteSpace(txtHoTenCha.Text) ||
+        //        string.IsNullOrWhiteSpace(txtHoTenMe.Text) ||
+        //        string.IsNullOrWhiteSpace(txtEmail.Text) ||
+        //        dtpNgaySinh.Value == null ||
+        //        cmbDanToc.SelectedValue == null ||
+        //        cmbTonGiao.SelectedValue == null ||
+        //        cmbNgheNghiepCha.SelectedValue == null ||
+        //        cmbNgheNghiepMe.SelectedValue == null)
+        //        MessageBox.Show(
+        //            "Giá trị của các ô không được rỗng !",
+        //            "ERROR",
+        //            MessageBoxButtons.OK,
+        //            MessageBoxIcon.Error
+        //        );
+        //    else
+        //    {
+        //        if (QuyDinhBUS.Instance.KiemTraDoTuoi(dtpNgaySinh.Value))
+        //        {
+        //            HocSinhDTO hocSinh = new HocSinhDTO(
+        //                txtMaHocSinh.Text,
+        //                txtTenHocSinh.Text,
+        //                gioiTinh,
+        //                dtpNgaySinh.Value,
+        //                txtDiaChi.Text,
+        //                cmbDanToc.SelectedValue.ToString(),
+        //                cmbTonGiao.SelectedValue.ToString(),
+        //                txtHoTenCha.Text,
+        //                cmbNgheNghiepCha.SelectedValue.ToString(),
+        //                txtHoTenMe.Text,
+        //                cmbNgheNghiepMe.SelectedValue.ToString(),
+        //                txtEmail.Text
+        //            );
+        //            HocSinhBUS.Instance.ThemHocSinh(hocSinh);
+        //            bindingNavigatorRefreshItem_Click(sender, e);
+        //        }
+        //        else MessageBox.Show(
+        //            $"Tuổi của học sinh {txtTenHocSinh.Text} không hợp lệ !",
+        //            "ERROR",
+        //            MessageBoxButtons.OK,
+        //            MessageBoxIcon.Error
+        //        );
+        //    } 
+        //}
+
         private void btnLuuVaoDS_Click(object sender, EventArgs e)
         {
-            bool gioiTinh = false;
-            if (ckbGTinhNu.Checked) gioiTinh = true;
+            bool gioiTinh = ckbGTinhNu.Checked;
 
             if (string.IsNullOrWhiteSpace(txtMaHocSinh.Text) ||
                 string.IsNullOrWhiteSpace(txtTenHocSinh.Text) ||
@@ -160,51 +214,75 @@ namespace QuanLyHocSinh
                 string.IsNullOrWhiteSpace(txtHoTenCha.Text) ||
                 string.IsNullOrWhiteSpace(txtHoTenMe.Text) ||
                 string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                dtpNgaySinh.Value == null ||
                 cmbDanToc.SelectedValue == null ||
                 cmbTonGiao.SelectedValue == null ||
                 cmbNgheNghiepCha.SelectedValue == null ||
                 cmbNgheNghiepMe.SelectedValue == null)
-                MessageBox.Show(
-                    "Giá trị của các ô không được rỗng !",
-                    "ERROR",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-            else
             {
-                if (QuyDinhBUS.Instance.KiemTraDoTuoi(dtpNgaySinh.Value))
+                MessageBox.Show("Giá trị của các ô không được rỗng!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            HocSinhDTO hocSinh = new HocSinhDTO(
+                txtMaHocSinh.Text,
+                txtTenHocSinh.Text,
+                gioiTinh,
+                dtpNgaySinh.Value,
+                txtDiaChi.Text,
+                cmbDanToc.SelectedValue.ToString(),
+                cmbTonGiao.SelectedValue.ToString(),
+                txtHoTenCha.Text,
+                cmbNgheNghiepCha.SelectedValue.ToString(),
+                txtHoTenMe.Text,
+                cmbNgheNghiepMe.SelectedValue.ToString(),
+                txtEmail.Text
+            );
+
+            using (var client = new QuanLyServiceClient())
+            {
+                if (client.ThemHocSinh(hocSinh))
                 {
-                    HocSinhDTO hocSinh = new HocSinhDTO(
-                        txtMaHocSinh.Text,
-                        txtTenHocSinh.Text,
-                        gioiTinh,
-                        dtpNgaySinh.Value,
-                        txtDiaChi.Text,
-                        cmbDanToc.SelectedValue.ToString(),
-                        cmbTonGiao.SelectedValue.ToString(),
-                        txtHoTenCha.Text,
-                        cmbNgheNghiepCha.SelectedValue.ToString(),
-                        txtHoTenMe.Text,
-                        cmbNgheNghiepMe.SelectedValue.ToString(),
-                        txtEmail.Text
-                    );
-                    HocSinhBUS.Instance.ThemHocSinh(hocSinh);
+                    MessageBox.Show("Thêm học sinh thành công!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     bindingNavigatorRefreshItem_Click(sender, e);
                 }
-                else MessageBox.Show(
-                    $"Tuổi của học sinh {txtTenHocSinh.Text} không hợp lệ !",
-                    "ERROR",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-            } 
+                else
+                {
+                    MessageBox.Show($"Tuổi của học sinh {txtTenHocSinh.Text} không hợp lệ!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            if (chkTimTheoMa.Checked) HocSinhBUS.Instance.TimTheoMa(txtTimKiem.Text);
-            else HocSinhBUS.Instance.TimTheoTen(txtTimKiem.Text);
+            //if (chkTimTheoMa.Checked) HocSinhBUS.Instance.TimTheoMa(txtTimKiem.Text);
+            //else HocSinhBUS.Instance.TimTheoTen(txtTimKiem.Text);
+
+            using (var client = new QuanLyServiceClient())
+            {
+                var result = chkTimTheoMa.Checked
+                    ? client.TimHocSinhTheoMa(txtTimKiem.Text)
+                    : client.TimHocSinhTheoTen(txtTimKiem.Text);
+
+                bindingSource.DataSource = result;
+                dgvHocSinh.DataSource = bindingSource;
+            }
+
+        }
+
+        private void dgvHocSinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvHocSinh_AllowUserToOrderColumnsChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonItemTimKiem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

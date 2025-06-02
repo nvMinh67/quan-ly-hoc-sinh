@@ -1,8 +1,15 @@
-﻿namespace DTO
+﻿using System.Runtime.Serialization;
+
+namespace DTO
 {
+
+    [DataContract]
     public class LoaiNguoiDungDTO
     {
+        [DataMember]
         private string maLoai;
+
+        [DataMember]
         private string tenLoai;
 
         public LoaiNguoiDungDTO() { }

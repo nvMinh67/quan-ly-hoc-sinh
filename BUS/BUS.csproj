@@ -68,6 +68,7 @@
     <Compile Include="QuyDinhBUS.cs" />
     <Compile Include="Reports\KQLHHocKyBUS.cs" />
     <Compile Include="Reports\KQLHMonHocBUS.cs" />
+    <Compile Include="TaiKhoanHocSinhBUS.cs" />
     <Compile Include="TonGiaoBUS.cs" />
     <Compile Include="UtilitiesBUS.cs" />
   </ItemGroup>

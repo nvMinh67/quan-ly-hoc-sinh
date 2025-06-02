@@ -1,13 +1,16 @@
-﻿namespace DTO
+﻿using System.Runtime.Serialization;
+
+namespace DTO
 {
+    [DataContract]
     public class LopDTO
     {
-        private string maLop;
-        private string tenLop;
-        private string maKhoiLop;
-        private string maNamHoc;
-        private int siSo;
-        private string maGiaoVien;
+        [DataMember] public string maLop { get; set; }
+        [DataMember] public string tenLop { get; set; }
+        [DataMember] public string maKhoiLop { get; set; }
+        [DataMember] public string maNamHoc { get; set; }
+        [DataMember] public int siSo { get; set; }
+        [DataMember] public string maGiaoVien { get; set; }
 
         public LopDTO() { }
         public LopDTO(string maLop, string tenLop, string maKhoiLop, string maNamHoc, int siSo, string maGiaoVien)

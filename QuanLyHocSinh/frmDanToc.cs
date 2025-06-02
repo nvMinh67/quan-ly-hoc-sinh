@@ -68,5 +68,10 @@ namespace QuanLyHocSinh
         {
             Close();
         }
+
+        private void dgvDanToc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

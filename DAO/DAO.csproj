@@ -66,6 +66,8 @@
     <Compile Include="QuyDinhDAO.cs" />
     <Compile Include="Reports\KQLHHocKyDAO.cs" />
     <Compile Include="Reports\KQLHMonHocDAO.cs" />
+    <Compile Include="TaiKhoanHocSinhDAO.cs" />
+    <Compile Include="TaiKhoanHsDAO.cs" />
     <Compile Include="TonGiaoDAO.cs" />
   </ItemGroup>
   <ItemGroup>

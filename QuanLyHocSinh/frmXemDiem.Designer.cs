@@ -74,8 +74,10 @@
             this.groupBoxDanhSach.Controls.Add(this.bindingNavigatorXemDiem);
             this.groupBoxDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxDanhSach.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxDanhSach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxDanhSach.Name = "groupBoxDanhSach";
-            this.groupBoxDanhSach.Size = new System.Drawing.Size(688, 453);
+            this.groupBoxDanhSach.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxDanhSach.Size = new System.Drawing.Size(1032, 697);
             this.groupBoxDanhSach.TabIndex = 2;
             this.groupBoxDanhSach.TabStop = false;
             this.groupBoxDanhSach.Text = "Danh sách hiển thị";
@@ -85,9 +87,10 @@
             this.ctxMenu.DockSide = DevComponents.DotNetBar.eDockSide.Document;
             this.ctxMenu.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnMenu});
-            this.ctxMenu.Location = new System.Drawing.Point(279, 203);
+            this.ctxMenu.Location = new System.Drawing.Point(418, 312);
+            this.ctxMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ctxMenu.Name = "ctxMenu";
-            this.ctxMenu.Size = new System.Drawing.Size(75, 25);
+            this.ctxMenu.Size = new System.Drawing.Size(112, 33);
             this.ctxMenu.Stretch = true;
             this.ctxMenu.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.ctxMenu.TabIndex = 4;
@@ -139,13 +142,15 @@
             this.ctxMenu.SetContextMenuEx(this.lvXemDiem, this.btnMenu);
             this.lvXemDiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvXemDiem.FullRowSelect = true;
-            this.lvXemDiem.Location = new System.Drawing.Point(3, 51);
+            this.lvXemDiem.Location = new System.Drawing.Point(4, 78);
+            this.lvXemDiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvXemDiem.Name = "lvXemDiem";
-            this.lvXemDiem.Size = new System.Drawing.Size(682, 399);
+            this.lvXemDiem.Size = new System.Drawing.Size(1024, 614);
             this.lvXemDiem.SmallImageList = this.imageListXemDiem;
             this.lvXemDiem.TabIndex = 4;
             this.lvXemDiem.UseCompatibleStateImageBehavior = false;
             this.lvXemDiem.View = System.Windows.Forms.View.Details;
+            this.lvXemDiem.SelectedIndexChanged += new System.EventHandler(this.lvXemDiem_SelectedIndexChanged);
             // 
             // colSTT
             // 
@@ -190,17 +195,19 @@
             this.bindingNavigatorXemDiem.CountItem = null;
             this.bindingNavigatorXemDiem.CountItemFormat = "của {0}";
             this.bindingNavigatorXemDiem.DeleteItem = null;
+            this.bindingNavigatorXemDiem.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.bindingNavigatorXemDiem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnXoa,
             this.btnThoat});
-            this.bindingNavigatorXemDiem.Location = new System.Drawing.Point(3, 16);
+            this.bindingNavigatorXemDiem.Location = new System.Drawing.Point(4, 24);
             this.bindingNavigatorXemDiem.MoveFirstItem = null;
             this.bindingNavigatorXemDiem.MoveLastItem = null;
             this.bindingNavigatorXemDiem.MoveNextItem = null;
             this.bindingNavigatorXemDiem.MovePreviousItem = null;
             this.bindingNavigatorXemDiem.Name = "bindingNavigatorXemDiem";
+            this.bindingNavigatorXemDiem.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.bindingNavigatorXemDiem.PositionItem = null;
-            this.bindingNavigatorXemDiem.Size = new System.Drawing.Size(682, 35);
+            this.bindingNavigatorXemDiem.Size = new System.Drawing.Size(1024, 54);
             this.bindingNavigatorXemDiem.TabIndex = 3;
             // 
             // btnXoa
@@ -209,7 +216,7 @@
             this.btnXoa.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.RightToLeftAutoMirrorImage = true;
-            this.btnXoa.Size = new System.Drawing.Size(138, 32);
+            this.btnXoa.Size = new System.Drawing.Size(201, 49);
             this.btnXoa.Text = "Xóa dòng được chọn";
             this.btnXoa.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
@@ -219,7 +226,7 @@
             this.btnThoat.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.RightToLeftAutoMirrorImage = true;
-            this.btnThoat.Size = new System.Drawing.Size(58, 32);
+            this.btnThoat.Size = new System.Drawing.Size(77, 49);
             this.btnThoat.Text = "Thoát";
             this.btnThoat.Click += new System.EventHandler(this.bindingNavigatorExitItem_Click);
             // 
@@ -232,11 +239,12 @@
             this.navPaneLeft.ItemPaddingTop = 2;
             this.navPaneLeft.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.buttonItemNhapDuLieu});
-            this.navPaneLeft.Location = new System.Drawing.Point(688, 0);
+            this.navPaneLeft.Location = new System.Drawing.Point(1032, 0);
+            this.navPaneLeft.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.navPaneLeft.Name = "navPaneLeft";
-            this.navPaneLeft.NavigationBarHeight = 59;
-            this.navPaneLeft.Padding = new System.Windows.Forms.Padding(1);
-            this.navPaneLeft.Size = new System.Drawing.Size(267, 453);
+            this.navPaneLeft.NavigationBarHeight = 36;
+            this.navPaneLeft.Padding = new System.Windows.Forms.Padding(2);
+            this.navPaneLeft.Size = new System.Drawing.Size(400, 697);
             this.navPaneLeft.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.navPaneLeft.TabIndex = 0;
             this.navPaneLeft.TitleButtonAlignment = DevComponents.DotNetBar.eTitleButtonAlignment.Left;
@@ -246,9 +254,10 @@
             this.navPaneLeft.TitlePanel.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.navPaneLeft.TitlePanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.navPaneLeft.TitlePanel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.navPaneLeft.TitlePanel.Location = new System.Drawing.Point(1, 1);
+            this.navPaneLeft.TitlePanel.Location = new System.Drawing.Point(2, 2);
+            this.navPaneLeft.TitlePanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.navPaneLeft.TitlePanel.Name = "panelTitle";
-            this.navPaneLeft.TitlePanel.Size = new System.Drawing.Size(265, 24);
+            this.navPaneLeft.TitlePanel.Size = new System.Drawing.Size(396, 37);
             this.navPaneLeft.TitlePanel.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.navPaneLeft.TitlePanel.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.navPaneLeft.TitlePanel.Style.Border = DevComponents.DotNetBar.eBorderType.RaisedInner;
@@ -275,10 +284,11 @@
             this.navPanelNhapDuLieu.Controls.Add(this.label5);
             this.navPanelNhapDuLieu.Controls.Add(this.label4);
             this.navPanelNhapDuLieu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navPanelNhapDuLieu.Location = new System.Drawing.Point(1, 25);
+            this.navPanelNhapDuLieu.Location = new System.Drawing.Point(2, 39);
+            this.navPanelNhapDuLieu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.navPanelNhapDuLieu.Name = "navPanelNhapDuLieu";
             this.navPanelNhapDuLieu.ParentItem = this.buttonItemNhapDuLieu;
-            this.navPanelNhapDuLieu.Size = new System.Drawing.Size(265, 368);
+            this.navPanelNhapDuLieu.Size = new System.Drawing.Size(396, 620);
             this.navPanelNhapDuLieu.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.navPanelNhapDuLieu.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.navPanelNhapDuLieu.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
@@ -286,15 +296,17 @@
             this.navPanelNhapDuLieu.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
             this.navPanelNhapDuLieu.Style.GradientAngle = 90;
             this.navPanelNhapDuLieu.TabIndex = 1;
+            this.navPanelNhapDuLieu.Click += new System.EventHandler(this.navPanelNhapDuLieu_Click);
             // 
             // btnHienThiDanhSach
             // 
             this.btnHienThiDanhSach.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnHienThiDanhSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.btnHienThiDanhSach.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnHienThiDanhSach.Location = new System.Drawing.Point(17, 245);
+            this.btnHienThiDanhSach.Location = new System.Drawing.Point(26, 377);
+            this.btnHienThiDanhSach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnHienThiDanhSach.Name = "btnHienThiDanhSach";
-            this.btnHienThiDanhSach.Size = new System.Drawing.Size(233, 23);
+            this.btnHienThiDanhSach.Size = new System.Drawing.Size(350, 35);
             this.btnHienThiDanhSach.TabIndex = 6;
             this.btnHienThiDanhSach.Text = "Hiển thị danh sách";
             this.btnHienThiDanhSach.Click += new System.EventHandler(this.btnHienThiDanhSach_Click);
@@ -302,18 +314,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 10);
+            this.label1.Location = new System.Drawing.Point(21, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(76, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Năm học:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 55);
+            this.label3.Location = new System.Drawing.Point(21, 85);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 13);
+            this.label3.Size = new System.Drawing.Size(40, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "Lớp:";
             // 
@@ -323,9 +337,10 @@
             this.cmbNamHoc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbNamHoc.FormattingEnabled = true;
             this.cmbNamHoc.ItemHeight = 14;
-            this.cmbNamHoc.Location = new System.Drawing.Point(17, 25);
+            this.cmbNamHoc.Location = new System.Drawing.Point(26, 38);
+            this.cmbNamHoc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbNamHoc.Name = "cmbNamHoc";
-            this.cmbNamHoc.Size = new System.Drawing.Size(233, 20);
+            this.cmbNamHoc.Size = new System.Drawing.Size(348, 20);
             this.cmbNamHoc.TabIndex = 1;
             this.cmbNamHoc.SelectedIndexChanged += new System.EventHandler(this.cmbNamHoc_SelectedIndexChanged);
             // 
@@ -335,9 +350,10 @@
             this.cmbHocKy.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbHocKy.FormattingEnabled = true;
             this.cmbHocKy.ItemHeight = 14;
-            this.cmbHocKy.Location = new System.Drawing.Point(17, 115);
+            this.cmbHocKy.Location = new System.Drawing.Point(26, 177);
+            this.cmbHocKy.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbHocKy.Name = "cmbHocKy";
-            this.cmbHocKy.Size = new System.Drawing.Size(233, 20);
+            this.cmbHocKy.Size = new System.Drawing.Size(348, 20);
             this.cmbHocKy.TabIndex = 2;
             // 
             // cmbLop
@@ -346,9 +362,10 @@
             this.cmbLop.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbLop.FormattingEnabled = true;
             this.cmbLop.ItemHeight = 14;
-            this.cmbLop.Location = new System.Drawing.Point(17, 70);
+            this.cmbLop.Location = new System.Drawing.Point(26, 108);
+            this.cmbLop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbLop.Name = "cmbLop";
-            this.cmbLop.Size = new System.Drawing.Size(233, 20);
+            this.cmbLop.Size = new System.Drawing.Size(348, 20);
             this.cmbLop.TabIndex = 3;
             this.cmbLop.SelectedIndexChanged += new System.EventHandler(this.cmbLop_SelectedIndexChanged);
             // 
@@ -358,9 +375,10 @@
             this.cmbHocSinh.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbHocSinh.FormattingEnabled = true;
             this.cmbHocSinh.ItemHeight = 14;
-            this.cmbHocSinh.Location = new System.Drawing.Point(17, 205);
+            this.cmbHocSinh.Location = new System.Drawing.Point(26, 315);
+            this.cmbHocSinh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbHocSinh.Name = "cmbHocSinh";
-            this.cmbHocSinh.Size = new System.Drawing.Size(233, 20);
+            this.cmbHocSinh.Size = new System.Drawing.Size(348, 20);
             this.cmbHocSinh.TabIndex = 4;
             // 
             // cmbMonHoc
@@ -369,43 +387,47 @@
             this.cmbMonHoc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbMonHoc.FormattingEnabled = true;
             this.cmbMonHoc.ItemHeight = 14;
-            this.cmbMonHoc.Location = new System.Drawing.Point(17, 160);
+            this.cmbMonHoc.Location = new System.Drawing.Point(26, 246);
+            this.cmbMonHoc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbMonHoc.Name = "cmbMonHoc";
-            this.cmbMonHoc.Size = new System.Drawing.Size(233, 20);
+            this.cmbMonHoc.Size = new System.Drawing.Size(348, 20);
             this.cmbMonHoc.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 100);
+            this.label2.Location = new System.Drawing.Point(21, 154);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(61, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Học kỳ:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 145);
+            this.label5.Location = new System.Drawing.Point(21, 223);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.Size = new System.Drawing.Size(74, 20);
             this.label5.TabIndex = 0;
             this.label5.Text = "Môn học:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 190);
+            this.label4.Location = new System.Drawing.Point(21, 292);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
+            this.label4.Size = new System.Drawing.Size(75, 20);
             this.label4.TabIndex = 0;
             this.label4.Text = "Học sinh:";
             // 
             // buttonItemNhapDuLieu
             // 
-            this.buttonItemNhapDuLieu.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
             this.buttonItemNhapDuLieu.Checked = true;
             this.buttonItemNhapDuLieu.Image = global::QuanLyHocSinh.Properties.Resources.thong_tin;
+            this.buttonItemNhapDuLieu.ImageFixedSize = new System.Drawing.Size(16, 16);
             this.buttonItemNhapDuLieu.ImagePaddingHorizontal = 8;
             this.buttonItemNhapDuLieu.Name = "buttonItemNhapDuLieu";
             this.buttonItemNhapDuLieu.OptionGroup = "navBar";
@@ -413,14 +435,15 @@
             // 
             // frmXemDiem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(955, 453);
+            this.ClientSize = new System.Drawing.Size(1432, 697);
             this.ctxMenu.SetContextMenuEx(this, this.btnMenu);
             this.Controls.Add(this.groupBoxDanhSach);
             this.Controls.Add(this.navPaneLeft);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmXemDiem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "XEM ĐIỂM";

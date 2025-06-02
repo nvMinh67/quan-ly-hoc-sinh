@@ -1,12 +1,15 @@
-﻿namespace DTO
+﻿using System.Runtime.Serialization;
+
+namespace DTO
 {
+    [DataContract]
     public class GiaoVienDTO
     {
-        private string maGiaoVien;
-        private string tenGiaoVien;
-        private string diaChi;
-        private string dienThoai;
-        private string chuyenMon;
+        [DataMember] public string maGiaoVien;
+        [DataMember]  public string tenGiaoVien;
+        [DataMember] public string diaChi;
+        [DataMember] public string dienThoai;
+        [DataMember] public string chuyenMon;
 
         public GiaoVienDTO(
             string maGiaoVien, 

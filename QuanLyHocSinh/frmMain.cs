@@ -2,17 +2,19 @@
 using DevComponents.DotNetBar;
 using Squirrel;
 using System;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using QuanLyHocSinh.WCFProxy1;
 namespace QuanLyHocSinh
 {
     public partial class frmMain : Office2007RibbonForm
     {
         frmDangNhap frmLogin = null;
         frmDoiMatKhau frmChangePass= null;
+
 
         public frmMain()
         {
@@ -114,27 +116,68 @@ namespace QuanLyHocSinh
                     frmLogin.lblPassError.Text = "Bạn chưa nhập mật khẩu !";
                     continue;
                 }
-
-                if (NguoiDungBUS.Instance.DangNhap(username, password))
+                using (var client = new QuanLyServiceClient())
                 {
-                    string maLoai = NguoiDungBUS.Instance.NguoiDung.LoaiNguoiDung.MaLoai;
-                    if (maLoai == "LND001") ShowGiaoDienBGH();
-                    else if (maLoai == "LND002") ShowGiaoDienGiaoVien();
-                    else if (maLoai == "LND003") ShowGiaoDienGiaoVu();
-                    else ShowGiaoDienMacDinh();
+                    if (client.DangNhap(username, password))
+                    {
+                        // Gọi tiếp GetThongTinNguoiDung nếu cần
+                        var nguoiDung = client.GetThongTinNguoiDung(username,password);
 
-                    string tenNguoiDung = NguoiDungBUS.Instance.NguoiDung.TenNguoiDung;
-                    lblTenNguoiDung.Text = tenNguoiDung;
-                    frmLogin.lblUserError.Text = "";
-                    frmLogin.lblPassError.Text = "";
-                    return;
-                } 
-                else
-                {
-                    frmLogin.lblUserError.Text = "Thông tin không chính xác !";
-                    frmLogin.lblPassError.Text = "Thông tin không chính xác !";
-                    continue;
+                        // Bạn có thể hiển thị tên người dùng WCF trả về
+                        lblTenNguoiDung.Text = nguoiDung.TenNguoiDung;
+
+                        // Hiển thị giao diện theo quyền
+                        string maLoai = nguoiDung.LoaiNguoiDung.MaLoai;
+              
+
+                        if (maLoai == "LND001") ShowGiaoDienBGH();
+                        else if (maLoai == "LND002") ShowGiaoDienGiaoVien();
+                        else if (maLoai == "LND003") ShowGiaoDienGiaoVu();
+                        else ShowGiaoDienMacDinh();
+
+                        frmLogin.lblUserError.Text = "";
+                        frmLogin.lblPassError.Text = "";
+                        return;
+                        
+                    }
+                    else if (client.DangNhapHocSinh(username, password))
+                    {
+                        MessageBox.Show("Đăng nhập thành công!");
+                        var hs = client.LayTaiKhoanHocSinh(username);
+                        ShowGiaoDienHS();
+                        //Hiển thị giao diện học sinh
+                        //ShowGiaoDienHocSinh();
+                        return;
+                    }
+                    else
+                    {
+                        frmLogin.lblUserError.Text = "Thông tin không chính xác wcf !";
+                        frmLogin.lblPassError.Text = "Thông tin không chính xác!";
+                        continue;
+                    }
                 }
+
+                //if (NguoiDungBUS.Instance.DangNhap(username, password))
+                //{
+                //    string maLoai = NguoiDungBUS.Instance.NguoiDung.LoaiNguoiDung.MaLoai;
+                //    if (maLoai == "LND001") ShowGiaoDienBGH();
+                //    else if (maLoai == "LND002") ShowGiaoDienGiaoVien();
+                //    else if (maLoai == "LND003") ShowGiaoDienGiaoVu();
+                //    else ShowGiaoDienMacDinh();
+
+                //    string tenNguoiDung = NguoiDungBUS.Instance.NguoiDung.TenNguoiDung;
+                //    lblTenNguoiDung.Text = tenNguoiDung;
+                //    frmLogin.lblUserError.Text = "";
+                //    frmLogin.lblPassError.Text = "";
+                //    return;
+                //}
+                //else
+                //{
+                //    frmLogin.lblUserError.Text = "Thông tin không chính xác !";
+                //    frmLogin.lblPassError.Text = "Thông tin không chính xác !";
+                //    continue;
+                //}
+
             }
         }
 
@@ -239,6 +282,7 @@ namespace QuanLyHocSinh
         {
             Close();
         }
+        
 
         #region Giao diện mặc định
         public void ShowGiaoDienMacDinh()
@@ -437,5 +481,58 @@ namespace QuanLyHocSinh
             btnDoTuoi.Enabled = false;
         }
         #endregion
+
+        private void tabStrip_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void ShowGiaoDienHS()
+        {
+            //True
+            btnDangXuat.Enabled = true;
+            btnDangXuatContext.Enabled = true;
+            btnDoiMatKhau.Enabled = true;
+            btnDoiMatKhauContext.Enabled = true;
+            btnThoat.Enabled = true;
+            btnThoatContext.Enabled = true;
+
+            ribbonBarMonHoc.Enabled = true;
+            btnMonHoc.Enabled = true;
+            btnDiem.Enabled = true;
+
+            btnKQHSMonHoc.Enabled = true;
+            btnKQHSCaNam.Enabled = true;
+            btnKQLHMonHoc.Enabled = true;
+            btnKQLHHocKy.Enabled = true;
+            btnDanhSachHocSinh.Enabled = true;
+            btnHoSoLopHoc.Enabled = true;
+
+            //False
+            btnDangNhap.Enabled = false;
+            btnDangNhapContext.Enabled = false;
+            btnQLNguoiDung.Enabled = false;
+            btnSaoLuu.Enabled = false;
+            btnPhucHoi.Enabled = false;
+
+            btnLopHoc.Enabled = false;
+            btnKhoiLop.Enabled = false;
+            btnHocKy.Enabled = false;
+            btnNamHoc.Enabled = false;
+            btnKetQua.Enabled = false;
+            btnHocLuc.Enabled = false;
+            btnHanhKiem.Enabled = false;
+            btnHocSinh.Enabled = false;
+            btnPhanLop.Enabled = false;
+            btnTonGiao.Enabled = false;
+            btnDanToc.Enabled = false;
+            btnNgheNghiep.Enabled = false;
+            btnGiaoVien.Enabled = false;
+            btnPhanCong.Enabled = false;
+
+            btnSiSo.Enabled = false;
+            btnDiemDat.Enabled = false;
+            btnDoTuoi.Enabled = false;
+        }
+
     }
 }

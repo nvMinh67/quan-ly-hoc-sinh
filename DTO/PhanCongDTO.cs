@@ -1,5 +1,8 @@
-﻿namespace DTO
+﻿using System.Runtime.Serialization;
+
+namespace DTO
 {
+    [DataContract]
     public class PhanCongDTO
     {
         private string maNamHoc;
@@ -15,9 +18,13 @@
             this.maGiaoVien = maGiaoVien;
         }
 
+        [DataMember]
         public string MaNamHoc { get => maNamHoc; set => maNamHoc = value; }
+        [DataMember]
         public string MaLop { get => maLop; set => maLop = value; }
+        [DataMember]
         public string MaMonHoc { get => maMonHoc; set => maMonHoc = value; }
+        [DataMember]
         public string MaGiaoVien { get => maGiaoVien; set => maGiaoVien = value; }
     }
 }

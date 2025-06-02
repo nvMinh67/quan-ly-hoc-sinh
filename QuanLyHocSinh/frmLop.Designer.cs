@@ -62,6 +62,13 @@
             this.bindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorExitItem = new System.Windows.Forms.ToolStripButton();
             this.navPaneRight = new DevComponents.DotNetBar.NavigationPane();
+            this.navPanelTimKiem = new DevComponents.DotNetBar.NavigationPanePanel();
+            this.label07 = new System.Windows.Forms.Label();
+            this.chkTimTheoTen = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.chkTimTheoMa = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.btnTimKiem = new DevComponents.DotNetBar.ButtonX();
+            this.txtTimKiem = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.buttonItemTimKiem = new DevComponents.DotNetBar.ButtonItem();
             this.navPanelNhapDuLieu = new DevComponents.DotNetBar.NavigationPanePanel();
             this.cmbNamHoc = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.cmbKhoiLop = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -80,22 +87,18 @@
             this.label04 = new System.Windows.Forms.Label();
             this.txtTenLop = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.buttonItemNhapDuLieu = new DevComponents.DotNetBar.ButtonItem();
-            this.navPanelTimKiem = new DevComponents.DotNetBar.NavigationPanePanel();
-            this.label07 = new System.Windows.Forms.Label();
-            this.chkTimTheoTen = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.chkTimTheoMa = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.btnTimKiem = new DevComponents.DotNetBar.ButtonX();
-            this.txtTimKiem = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.buttonItemTimKiem = new DevComponents.DotNetBar.ButtonItem();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxDanhSach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctxMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorLop)).BeginInit();
             this.bindingNavigatorLop.SuspendLayout();
             this.navPaneRight.SuspendLayout();
+            this.navPanelTimKiem.SuspendLayout();
             this.navPanelNhapDuLieu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iniSiSo)).BeginInit();
-            this.navPanelTimKiem.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxDanhSach
@@ -105,8 +108,10 @@
             this.groupBoxDanhSach.Controls.Add(this.bindingNavigatorLop);
             this.groupBoxDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxDanhSach.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxDanhSach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxDanhSach.Name = "groupBoxDanhSach";
-            this.groupBoxDanhSach.Size = new System.Drawing.Size(527, 443);
+            this.groupBoxDanhSach.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxDanhSach.Size = new System.Drawing.Size(791, 682);
             this.groupBoxDanhSach.TabIndex = 3;
             this.groupBoxDanhSach.TabStop = false;
             this.groupBoxDanhSach.Text = "Danh sách lớp";
@@ -116,9 +121,10 @@
             this.ctxMenu.DockSide = DevComponents.DotNetBar.eDockSide.Document;
             this.ctxMenu.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnMenu});
-            this.ctxMenu.Location = new System.Drawing.Point(279, 203);
+            this.ctxMenu.Location = new System.Drawing.Point(418, 312);
+            this.ctxMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ctxMenu.Name = "ctxMenu";
-            this.ctxMenu.Size = new System.Drawing.Size(75, 25);
+            this.ctxMenu.Size = new System.Drawing.Size(112, 33);
             this.ctxMenu.Stretch = true;
             this.ctxMenu.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.ctxMenu.TabIndex = 4;
@@ -210,12 +216,14 @@
             this.dgvLop.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLop.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgvLop.Location = new System.Drawing.Point(3, 51);
+            this.dgvLop.Location = new System.Drawing.Point(4, 78);
+            this.dgvLop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvLop.Name = "dgvLop";
             this.dgvLop.RowHeadersWidth = 62;
             this.dgvLop.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvLop.Size = new System.Drawing.Size(521, 389);
+            this.dgvLop.Size = new System.Drawing.Size(783, 599);
             this.dgvLop.TabIndex = 5;
+            this.dgvLop.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLop_CellContentClick);
             // 
             // colMaLop
             // 
@@ -299,22 +307,22 @@
             this.bindingNavigatorDeleteItem,
             this.bindingNavigatorSaveItem,
             this.bindingNavigatorExitItem});
-            this.bindingNavigatorLop.Location = new System.Drawing.Point(3, 16);
+            this.bindingNavigatorLop.Location = new System.Drawing.Point(4, 24);
             this.bindingNavigatorLop.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigatorLop.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigatorLop.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bindingNavigatorLop.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigatorLop.Name = "bindingNavigatorLop";
-            this.bindingNavigatorLop.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.bindingNavigatorLop.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.bindingNavigatorLop.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigatorLop.Size = new System.Drawing.Size(521, 35);
+            this.bindingNavigatorLop.Size = new System.Drawing.Size(783, 54);
             this.bindingNavigatorLop.TabIndex = 4;
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
             this.bindingNavigatorCountItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 32);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(64, 49);
             this.bindingNavigatorCountItem.Text = "của {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Tổng số dòng trong danh sách";
             // 
@@ -325,7 +333,7 @@
             this.bindingNavigatorMoveFirstItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorMoveFirstItem.Text = "Đến đầu danh sách";
             // 
             // bindingNavigatorMovePreviousItem
@@ -335,27 +343,28 @@
             this.bindingNavigatorMovePreviousItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorMovePreviousItem.Text = "Trở lại dòng trước";
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 35);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 54);
             // 
             // bindingNavigatorPositionItem
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(73, 31);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Vị trí hiện tại";
             // 
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 35);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 54);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -365,7 +374,7 @@
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorMoveNextItem.Text = "Tới dòng kế tiếp";
             // 
             // bindingNavigatorMoveLastItem
@@ -376,13 +385,13 @@
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorMoveLastItem.Text = "Đến cuối danh sách";
             // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 35);
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 54);
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -391,7 +400,7 @@
             this.bindingNavigatorAddNewItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorAddNewItem.Text = "Thêm";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
@@ -402,7 +411,7 @@
             this.bindingNavigatorRefreshItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bindingNavigatorRefreshItem.Name = "bindingNavigatorRefreshItem";
             this.bindingNavigatorRefreshItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorRefreshItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorRefreshItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorRefreshItem.Text = "Làm tươi danh sách";
             this.bindingNavigatorRefreshItem.Click += new System.EventHandler(this.bindingNavigatorRefreshItem_Click);
             // 
@@ -413,7 +422,7 @@
             this.bindingNavigatorDeleteItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorDeleteItem.Text = "Xóa";
             this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
@@ -424,7 +433,7 @@
             this.bindingNavigatorSaveItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bindingNavigatorSaveItem.Name = "bindingNavigatorSaveItem";
             this.bindingNavigatorSaveItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorSaveItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorSaveItem.Text = "Lưu";
             this.bindingNavigatorSaveItem.Click += new System.EventHandler(this.bindingNavigatorSaveItem_Click);
             // 
@@ -435,7 +444,7 @@
             this.bindingNavigatorExitItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bindingNavigatorExitItem.Name = "bindingNavigatorExitItem";
             this.bindingNavigatorExitItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorExitItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorExitItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorExitItem.Text = "Thoát";
             this.bindingNavigatorExitItem.Click += new System.EventHandler(this.bindingNavigatorExitItem_Click);
             // 
@@ -450,11 +459,12 @@
             this.navPaneRight.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.buttonItemNhapDuLieu,
             this.buttonItemTimKiem});
-            this.navPaneRight.Location = new System.Drawing.Point(527, 0);
+            this.navPaneRight.Location = new System.Drawing.Point(791, 0);
+            this.navPaneRight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.navPaneRight.Name = "navPaneRight";
-            this.navPaneRight.NavigationBarHeight = 86;
-            this.navPaneRight.Padding = new System.Windows.Forms.Padding(1);
-            this.navPaneRight.Size = new System.Drawing.Size(267, 443);
+            this.navPaneRight.NavigationBarHeight = 98;
+            this.navPaneRight.Padding = new System.Windows.Forms.Padding(2);
+            this.navPaneRight.Size = new System.Drawing.Size(400, 682);
             this.navPaneRight.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.navPaneRight.TabIndex = 0;
             this.navPaneRight.TitleButtonAlignment = DevComponents.DotNetBar.eTitleButtonAlignment.Left;
@@ -464,9 +474,10 @@
             this.navPaneRight.TitlePanel.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.navPaneRight.TitlePanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.navPaneRight.TitlePanel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.navPaneRight.TitlePanel.Location = new System.Drawing.Point(1, 1);
+            this.navPaneRight.TitlePanel.Location = new System.Drawing.Point(2, 2);
+            this.navPaneRight.TitlePanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.navPaneRight.TitlePanel.Name = "panelTitle";
-            this.navPaneRight.TitlePanel.Size = new System.Drawing.Size(265, 24);
+            this.navPaneRight.TitlePanel.Size = new System.Drawing.Size(396, 37);
             this.navPaneRight.TitlePanel.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.navPaneRight.TitlePanel.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.navPaneRight.TitlePanel.Style.Border = DevComponents.DotNetBar.eBorderType.RaisedInner;
@@ -477,6 +488,95 @@
             this.navPaneRight.TitlePanel.Style.MarginLeft = 4;
             this.navPaneRight.TitlePanel.TabIndex = 0;
             this.navPaneRight.TitlePanel.Text = "    Nhập liệu thông tin";
+            // 
+            // navPanelTimKiem
+            // 
+            this.navPanelTimKiem.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.navPanelTimKiem.Controls.Add(this.label07);
+            this.navPanelTimKiem.Controls.Add(this.chkTimTheoTen);
+            this.navPanelTimKiem.Controls.Add(this.chkTimTheoMa);
+            this.navPanelTimKiem.Controls.Add(this.btnTimKiem);
+            this.navPanelTimKiem.Controls.Add(this.txtTimKiem);
+            this.navPanelTimKiem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.navPanelTimKiem.Location = new System.Drawing.Point(2, 2);
+            this.navPanelTimKiem.Name = "navPanelTimKiem";
+            this.navPanelTimKiem.ParentItem = this.buttonItemTimKiem;
+            this.navPanelTimKiem.Size = new System.Drawing.Size(396, 678);
+            this.navPanelTimKiem.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.navPanelTimKiem.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.navPanelTimKiem.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.navPanelTimKiem.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.navPanelTimKiem.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
+            this.navPanelTimKiem.Style.GradientAngle = 90;
+            this.navPanelTimKiem.TabIndex = 2;
+            // 
+            // label07
+            // 
+            this.label07.AutoSize = true;
+            this.label07.Location = new System.Drawing.Point(12, 15);
+            this.label07.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label07.Name = "label07";
+            this.label07.Size = new System.Drawing.Size(179, 20);
+            this.label07.TabIndex = 0;
+            this.label07.Text = "Nhập thông tin tìm kiếm:";
+            // 
+            // chkTimTheoTen
+            // 
+            this.chkTimTheoTen.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.chkTimTheoTen.Location = new System.Drawing.Point(12, 115);
+            this.chkTimTheoTen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkTimTheoTen.Name = "chkTimTheoTen";
+            this.chkTimTheoTen.Size = new System.Drawing.Size(244, 35);
+            this.chkTimTheoTen.TabIndex = 5;
+            this.chkTimTheoTen.Text = "Tìm theo tên lớp";
+            // 
+            // chkTimTheoMa
+            // 
+            this.chkTimTheoMa.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.chkTimTheoMa.Checked = true;
+            this.chkTimTheoMa.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkTimTheoMa.CheckValue = "Y";
+            this.chkTimTheoMa.Location = new System.Drawing.Point(12, 77);
+            this.chkTimTheoMa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkTimTheoMa.Name = "chkTimTheoMa";
+            this.chkTimTheoMa.Size = new System.Drawing.Size(244, 35);
+            this.chkTimTheoMa.TabIndex = 4;
+            this.chkTimTheoMa.Text = "Tìm theo mã lớp";
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.btnTimKiem.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnTimKiem.Location = new System.Drawing.Point(16, 162);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(240, 35);
+            this.btnTimKiem.TabIndex = 6;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // txtTimKiem
+            // 
+            // 
+            // 
+            // 
+            this.txtTimKiem.Border.Class = "TextBoxBorder";
+            this.txtTimKiem.Location = new System.Drawing.Point(16, 38);
+            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(240, 26);
+            this.txtTimKiem.TabIndex = 3;
+            this.txtTimKiem.WatermarkText = "Nhập thông tin cần tìm vào đây";
+            // 
+            // buttonItemTimKiem
+            // 
+            this.buttonItemTimKiem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.buttonItemTimKiem.Image = global::QuanLyHocSinh.Properties.Resources.thong_tin;
+            this.buttonItemTimKiem.ImagePaddingHorizontal = 8;
+            this.buttonItemTimKiem.Name = "buttonItemTimKiem";
+            this.buttonItemTimKiem.OptionGroup = "navBar";
+            this.buttonItemTimKiem.Text = "    Tìm kiếm thông tin";
             // 
             // navPanelNhapDuLieu
             // 
@@ -498,11 +598,10 @@
             this.navPanelNhapDuLieu.Controls.Add(this.label04);
             this.navPanelNhapDuLieu.Controls.Add(this.txtTenLop);
             this.navPanelNhapDuLieu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navPanelNhapDuLieu.Location = new System.Drawing.Point(1, 25);
-            this.navPanelNhapDuLieu.Margin = new System.Windows.Forms.Padding(2);
+            this.navPanelNhapDuLieu.Location = new System.Drawing.Point(2, 39);
             this.navPanelNhapDuLieu.Name = "navPanelNhapDuLieu";
             this.navPanelNhapDuLieu.ParentItem = this.buttonItemNhapDuLieu;
-            this.navPanelNhapDuLieu.Size = new System.Drawing.Size(265, 331);
+            this.navPanelNhapDuLieu.Size = new System.Drawing.Size(396, 543);
             this.navPanelNhapDuLieu.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.navPanelNhapDuLieu.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.navPanelNhapDuLieu.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
@@ -517,9 +616,10 @@
             this.cmbNamHoc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbNamHoc.FormattingEnabled = true;
             this.cmbNamHoc.ItemHeight = 14;
-            this.cmbNamHoc.Location = new System.Drawing.Point(16, 204);
+            this.cmbNamHoc.Location = new System.Drawing.Point(24, 314);
+            this.cmbNamHoc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbNamHoc.Name = "cmbNamHoc";
-            this.cmbNamHoc.Size = new System.Drawing.Size(208, 20);
+            this.cmbNamHoc.Size = new System.Drawing.Size(310, 20);
             this.cmbNamHoc.TabIndex = 6;
             // 
             // cmbKhoiLop
@@ -528,9 +628,10 @@
             this.cmbKhoiLop.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbKhoiLop.FormattingEnabled = true;
             this.cmbKhoiLop.ItemHeight = 14;
-            this.cmbKhoiLop.Location = new System.Drawing.Point(16, 159);
+            this.cmbKhoiLop.Location = new System.Drawing.Point(24, 245);
+            this.cmbKhoiLop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbKhoiLop.Name = "cmbKhoiLop";
-            this.cmbKhoiLop.Size = new System.Drawing.Size(208, 20);
+            this.cmbKhoiLop.Size = new System.Drawing.Size(310, 20);
             this.cmbKhoiLop.TabIndex = 4;
             // 
             // iniSiSo
@@ -540,12 +641,13 @@
             // 
             this.iniSiSo.BackgroundStyle.Class = "DateTimeInputBackground";
             this.iniSiSo.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.iniSiSo.Location = new System.Drawing.Point(16, 115);
+            this.iniSiSo.Location = new System.Drawing.Point(24, 177);
+            this.iniSiSo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.iniSiSo.MaxValue = 100;
             this.iniSiSo.MinValue = 0;
             this.iniSiSo.Name = "iniSiSo";
             this.iniSiSo.ShowUpDown = true;
-            this.iniSiSo.Size = new System.Drawing.Size(209, 20);
+            this.iniSiSo.Size = new System.Drawing.Size(314, 26);
             this.iniSiSo.TabIndex = 8;
             // 
             // btnLuuVaoDS
@@ -553,9 +655,10 @@
             this.btnLuuVaoDS.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnLuuVaoDS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.btnLuuVaoDS.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnLuuVaoDS.Location = new System.Drawing.Point(16, 291);
+            this.btnLuuVaoDS.Location = new System.Drawing.Point(24, 448);
+            this.btnLuuVaoDS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLuuVaoDS.Name = "btnLuuVaoDS";
-            this.btnLuuVaoDS.Size = new System.Drawing.Size(233, 23);
+            this.btnLuuVaoDS.Size = new System.Drawing.Size(350, 35);
             this.btnLuuVaoDS.TabIndex = 11;
             this.btnLuuVaoDS.Text = "Lưu vào danh sách";
             this.btnLuuVaoDS.Click += new System.EventHandler(this.btnLuuVaoDS_Click);
@@ -565,9 +668,10 @@
             this.btnThemKhoiLop.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnThemKhoiLop.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnThemKhoiLop.Image = ((System.Drawing.Image)(resources.GetObject("btnThemKhoiLop.Image")));
-            this.btnThemKhoiLop.Location = new System.Drawing.Point(229, 159);
+            this.btnThemKhoiLop.Location = new System.Drawing.Point(344, 245);
+            this.btnThemKhoiLop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnThemKhoiLop.Name = "btnThemKhoiLop";
-            this.btnThemKhoiLop.Size = new System.Drawing.Size(20, 20);
+            this.btnThemKhoiLop.Size = new System.Drawing.Size(30, 31);
             this.btnThemKhoiLop.TabIndex = 5;
             this.btnThemKhoiLop.Click += new System.EventHandler(this.btnThemKhoiLop_Click);
             // 
@@ -576,9 +680,10 @@
             this.btnThemNamHoc.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnThemNamHoc.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnThemNamHoc.Image = ((System.Drawing.Image)(resources.GetObject("btnThemNamHoc.Image")));
-            this.btnThemNamHoc.Location = new System.Drawing.Point(229, 204);
+            this.btnThemNamHoc.Location = new System.Drawing.Point(344, 314);
+            this.btnThemNamHoc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnThemNamHoc.Name = "btnThemNamHoc";
-            this.btnThemNamHoc.Size = new System.Drawing.Size(20, 20);
+            this.btnThemNamHoc.Size = new System.Drawing.Size(30, 31);
             this.btnThemNamHoc.TabIndex = 7;
             this.btnThemNamHoc.Click += new System.EventHandler(this.btnThemNamHoc_Click);
             // 
@@ -587,27 +692,30 @@
             this.btnThemGiaoVien.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnThemGiaoVien.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnThemGiaoVien.Image = ((System.Drawing.Image)(resources.GetObject("btnThemGiaoVien.Image")));
-            this.btnThemGiaoVien.Location = new System.Drawing.Point(229, 250);
+            this.btnThemGiaoVien.Location = new System.Drawing.Point(344, 385);
+            this.btnThemGiaoVien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnThemGiaoVien.Name = "btnThemGiaoVien";
-            this.btnThemGiaoVien.Size = new System.Drawing.Size(20, 20);
+            this.btnThemGiaoVien.Size = new System.Drawing.Size(30, 31);
             this.btnThemGiaoVien.TabIndex = 10;
             this.btnThemGiaoVien.Click += new System.EventHandler(this.btnThemGiaoVien_Click);
             // 
             // label01
             // 
             this.label01.AutoSize = true;
-            this.label01.Location = new System.Drawing.Point(13, 10);
+            this.label01.Location = new System.Drawing.Point(20, 15);
+            this.label01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label01.Name = "label01";
-            this.label01.Size = new System.Drawing.Size(42, 13);
+            this.label01.Size = new System.Drawing.Size(60, 20);
             this.label01.TabIndex = 0;
             this.label01.Text = "Mã lớp:";
             // 
             // label03
             // 
             this.label03.AutoSize = true;
-            this.label03.Location = new System.Drawing.Point(13, 144);
+            this.label03.Location = new System.Drawing.Point(20, 222);
+            this.label03.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label03.Name = "label03";
-            this.label03.Size = new System.Drawing.Size(48, 13);
+            this.label03.Size = new System.Drawing.Size(69, 20);
             this.label03.TabIndex = 0;
             this.label03.Text = "Khối lớp:";
             // 
@@ -617,17 +725,19 @@
             this.cmbGiaoVien.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbGiaoVien.FormattingEnabled = true;
             this.cmbGiaoVien.ItemHeight = 14;
-            this.cmbGiaoVien.Location = new System.Drawing.Point(16, 250);
+            this.cmbGiaoVien.Location = new System.Drawing.Point(24, 385);
+            this.cmbGiaoVien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbGiaoVien.Name = "cmbGiaoVien";
-            this.cmbGiaoVien.Size = new System.Drawing.Size(208, 20);
+            this.cmbGiaoVien.Size = new System.Drawing.Size(310, 20);
             this.cmbGiaoVien.TabIndex = 9;
             // 
             // label02
             // 
             this.label02.AutoSize = true;
-            this.label02.Location = new System.Drawing.Point(13, 55);
+            this.label02.Location = new System.Drawing.Point(20, 85);
+            this.label02.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label02.Name = "label02";
-            this.label02.Size = new System.Drawing.Size(46, 13);
+            this.label02.Size = new System.Drawing.Size(65, 20);
             this.label02.TabIndex = 0;
             this.label02.Text = "Tên lớp:";
             // 
@@ -637,36 +747,40 @@
             // 
             // 
             this.txtMaLop.Border.Class = "TextBoxBorder";
-            this.txtMaLop.Location = new System.Drawing.Point(16, 25);
+            this.txtMaLop.Location = new System.Drawing.Point(24, 38);
+            this.txtMaLop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMaLop.MaxLength = 10;
             this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.Size = new System.Drawing.Size(209, 20);
+            this.txtMaLop.Size = new System.Drawing.Size(314, 26);
             this.txtMaLop.TabIndex = 2;
             // 
             // label06
             // 
             this.label06.AutoSize = true;
-            this.label06.Location = new System.Drawing.Point(13, 235);
+            this.label06.Location = new System.Drawing.Point(20, 362);
+            this.label06.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label06.Name = "label06";
-            this.label06.Size = new System.Drawing.Size(107, 13);
+            this.label06.Size = new System.Drawing.Size(156, 20);
             this.label06.TabIndex = 0;
             this.label06.Text = "Giáo viên chủ nhiệm:";
             // 
             // label05
             // 
             this.label05.AutoSize = true;
-            this.label05.Location = new System.Drawing.Point(13, 100);
+            this.label05.Location = new System.Drawing.Point(20, 154);
+            this.label05.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label05.Name = "label05";
-            this.label05.Size = new System.Drawing.Size(50, 13);
+            this.label05.Size = new System.Drawing.Size(73, 20);
             this.label05.TabIndex = 0;
             this.label05.Text = "Sỉ số lớp:";
             // 
             // label04
             // 
             this.label04.AutoSize = true;
-            this.label04.Location = new System.Drawing.Point(13, 189);
+            this.label04.Location = new System.Drawing.Point(20, 291);
+            this.label04.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label04.Name = "label04";
-            this.label04.Size = new System.Drawing.Size(53, 13);
+            this.label04.Size = new System.Drawing.Size(76, 20);
             this.label04.TabIndex = 0;
             this.label04.Text = "Năm học:";
             // 
@@ -676,10 +790,11 @@
             // 
             // 
             this.txtTenLop.Border.Class = "TextBoxBorder";
-            this.txtTenLop.Location = new System.Drawing.Point(16, 70);
+            this.txtTenLop.Location = new System.Drawing.Point(24, 108);
+            this.txtTenLop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTenLop.MaxLength = 30;
             this.txtTenLop.Name = "txtTenLop";
-            this.txtTenLop.Size = new System.Drawing.Size(209, 20);
+            this.txtTenLop.Size = new System.Drawing.Size(314, 26);
             this.txtTenLop.TabIndex = 3;
             // 
             // buttonItemNhapDuLieu
@@ -692,101 +807,47 @@
             this.buttonItemNhapDuLieu.OptionGroup = "navBar";
             this.buttonItemNhapDuLieu.Text = "    Nhập liệu thông tin";
             // 
-            // navPanelTimKiem
+            // dataGridViewTextBoxColumn1
             // 
-            this.navPanelTimKiem.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.navPanelTimKiem.Controls.Add(this.label07);
-            this.navPanelTimKiem.Controls.Add(this.chkTimTheoTen);
-            this.navPanelTimKiem.Controls.Add(this.chkTimTheoMa);
-            this.navPanelTimKiem.Controls.Add(this.btnTimKiem);
-            this.navPanelTimKiem.Controls.Add(this.txtTimKiem);
-            this.navPanelTimKiem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navPanelTimKiem.Location = new System.Drawing.Point(1, 1);
-            this.navPanelTimKiem.Margin = new System.Windows.Forms.Padding(2);
-            this.navPanelTimKiem.Name = "navPanelTimKiem";
-            this.navPanelTimKiem.ParentItem = this.buttonItemTimKiem;
-            this.navPanelTimKiem.Size = new System.Drawing.Size(265, 441);
-            this.navPanelTimKiem.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.navPanelTimKiem.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.navPanelTimKiem.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.navPanelTimKiem.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.navPanelTimKiem.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.navPanelTimKiem.Style.GradientAngle = 90;
-            this.navPanelTimKiem.TabIndex = 2;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "MaLop";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Mã lớp";
+            this.dataGridViewTextBoxColumn1.MaxInputLength = 10;
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.Width = 80;
             // 
-            // label07
+            // dataGridViewTextBoxColumn2
             // 
-            this.label07.AutoSize = true;
-            this.label07.Location = new System.Drawing.Point(8, 10);
-            this.label07.Name = "label07";
-            this.label07.Size = new System.Drawing.Size(121, 13);
-            this.label07.TabIndex = 0;
-            this.label07.Text = "Nhập thông tin tìm kiếm:";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "TenLop";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Tên lớp";
+            this.dataGridViewTextBoxColumn2.MaxInputLength = 30;
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn2.Width = 80;
             // 
-            // chkTimTheoTen
+            // dataGridViewTextBoxColumn3
             // 
-            this.chkTimTheoTen.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.chkTimTheoTen.Location = new System.Drawing.Point(8, 75);
-            this.chkTimTheoTen.Name = "chkTimTheoTen";
-            this.chkTimTheoTen.Size = new System.Drawing.Size(163, 23);
-            this.chkTimTheoTen.TabIndex = 5;
-            this.chkTimTheoTen.Text = "Tìm theo tên lớp";
-            // 
-            // chkTimTheoMa
-            // 
-            this.chkTimTheoMa.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.chkTimTheoMa.Checked = true;
-            this.chkTimTheoMa.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkTimTheoMa.CheckValue = "Y";
-            this.chkTimTheoMa.Location = new System.Drawing.Point(8, 50);
-            this.chkTimTheoMa.Name = "chkTimTheoMa";
-            this.chkTimTheoMa.Size = new System.Drawing.Size(163, 23);
-            this.chkTimTheoMa.TabIndex = 4;
-            this.chkTimTheoMa.Text = "Tìm theo mã lớp";
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.btnTimKiem.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnTimKiem.Location = new System.Drawing.Point(11, 105);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(160, 23);
-            this.btnTimKiem.TabIndex = 6;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // txtTimKiem
-            // 
-            // 
-            // 
-            // 
-            this.txtTimKiem.Border.Class = "TextBoxBorder";
-            this.txtTimKiem.Location = new System.Drawing.Point(11, 25);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(160, 20);
-            this.txtTimKiem.TabIndex = 3;
-            this.txtTimKiem.WatermarkText = "Nhập thông tin cần tìm vào đây";
-            // 
-            // buttonItemTimKiem
-            // 
-            this.buttonItemTimKiem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItemTimKiem.Image = global::QuanLyHocSinh.Properties.Resources.thong_tin;
-            this.buttonItemTimKiem.ImagePaddingHorizontal = 8;
-            this.buttonItemTimKiem.Name = "buttonItemTimKiem";
-            this.buttonItemTimKiem.OptionGroup = "navBar";
-            this.buttonItemTimKiem.Text = "    Tìm kiếm thông tin";
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "SiSo";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Sỉ số";
+            this.dataGridViewTextBoxColumn3.MaxInputLength = 2;
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn3.Width = 60;
             // 
             // frmLop
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 443);
+            this.ClientSize = new System.Drawing.Size(1191, 682);
             this.ctxMenu.SetContextMenuEx(this, this.btnMenu);
             this.Controls.Add(this.groupBoxDanhSach);
             this.Controls.Add(this.navPaneRight);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmLop";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -800,11 +861,11 @@
             this.bindingNavigatorLop.ResumeLayout(false);
             this.bindingNavigatorLop.PerformLayout();
             this.navPaneRight.ResumeLayout(false);
+            this.navPanelTimKiem.ResumeLayout(false);
+            this.navPanelTimKiem.PerformLayout();
             this.navPanelNhapDuLieu.ResumeLayout(false);
             this.navPanelNhapDuLieu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iniSiSo)).EndInit();
-            this.navPanelTimKiem.ResumeLayout(false);
-            this.navPanelTimKiem.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -870,5 +931,8 @@
         private DevComponents.DotNetBar.ButtonItem btnDelete;
         private DevComponents.DotNetBar.ButtonItem btnSave;
         private DevComponents.DotNetBar.ButtonItem btnClose;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }

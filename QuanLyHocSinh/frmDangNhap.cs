@@ -25,5 +25,10 @@ namespace QuanLyHocSinh
         {
             if (e.KeyCode == Keys.Enter) DialogResult = DialogResult.OK;
         }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

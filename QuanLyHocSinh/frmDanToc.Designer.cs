@@ -68,8 +68,10 @@
             this.groupBoxDanhSach.Controls.Add(this.bindingNavigatorDanToc);
             this.groupBoxDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxDanhSach.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxDanhSach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxDanhSach.Name = "groupBoxDanhSach";
-            this.groupBoxDanhSach.Size = new System.Drawing.Size(359, 318);
+            this.groupBoxDanhSach.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxDanhSach.Size = new System.Drawing.Size(538, 489);
             this.groupBoxDanhSach.TabIndex = 1;
             this.groupBoxDanhSach.TabStop = false;
             this.groupBoxDanhSach.Text = "Danh sách dân tộc";
@@ -79,9 +81,10 @@
             this.ctxMenu.DockSide = DevComponents.DotNetBar.eDockSide.Document;
             this.ctxMenu.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnMenu});
-            this.ctxMenu.Location = new System.Drawing.Point(131, 163);
+            this.ctxMenu.Location = new System.Drawing.Point(196, 251);
+            this.ctxMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ctxMenu.Name = "ctxMenu";
-            this.ctxMenu.Size = new System.Drawing.Size(75, 25);
+            this.ctxMenu.Size = new System.Drawing.Size(112, 33);
             this.ctxMenu.Stretch = true;
             this.ctxMenu.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.ctxMenu.TabIndex = 4;
@@ -143,6 +146,7 @@
             this.dgvDanToc.AllowUserToResizeColumns = false;
             this.dgvDanToc.AllowUserToResizeRows = false;
             this.dgvDanToc.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
+            this.dgvDanToc.ColumnHeadersHeight = 34;
             this.dgvDanToc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDanToc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMaDanToc,
@@ -158,25 +162,31 @@
             this.dgvDanToc.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDanToc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDanToc.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgvDanToc.Location = new System.Drawing.Point(3, 51);
+            this.dgvDanToc.Location = new System.Drawing.Point(4, 78);
+            this.dgvDanToc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvDanToc.Name = "dgvDanToc";
+            this.dgvDanToc.RowHeadersWidth = 62;
             this.dgvDanToc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvDanToc.Size = new System.Drawing.Size(353, 264);
+            this.dgvDanToc.Size = new System.Drawing.Size(530, 406);
             this.dgvDanToc.TabIndex = 3;
+            this.dgvDanToc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanToc_CellContentClick);
             // 
             // colMaDanToc
             // 
             this.colMaDanToc.DataPropertyName = "MaDanToc";
             this.colMaDanToc.HeaderText = "Mã dân tộc";
             this.colMaDanToc.MaxInputLength = 6;
+            this.colMaDanToc.MinimumWidth = 8;
             this.colMaDanToc.Name = "colMaDanToc";
             this.colMaDanToc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colMaDanToc.Width = 150;
             // 
             // colTenDanToc
             // 
             this.colTenDanToc.DataPropertyName = "TenDanToc";
             this.colTenDanToc.HeaderText = "Tên dân tộc";
             this.colTenDanToc.MaxInputLength = 30;
+            this.colTenDanToc.MinimumWidth = 8;
             this.colTenDanToc.Name = "colTenDanToc";
             this.colTenDanToc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colTenDanToc.Width = 210;
@@ -188,6 +198,7 @@
             this.bindingNavigatorDanToc.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigatorDanToc.CountItemFormat = "của {0}";
             this.bindingNavigatorDanToc.DeleteItem = null;
+            this.bindingNavigatorDanToc.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.bindingNavigatorDanToc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -202,21 +213,22 @@
             this.bindingNavigatorDeleteItem,
             this.bindingNavigatorSaveItem,
             this.bindingNavigatorExitItem});
-            this.bindingNavigatorDanToc.Location = new System.Drawing.Point(3, 16);
+            this.bindingNavigatorDanToc.Location = new System.Drawing.Point(4, 24);
             this.bindingNavigatorDanToc.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigatorDanToc.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigatorDanToc.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bindingNavigatorDanToc.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigatorDanToc.Name = "bindingNavigatorDanToc";
+            this.bindingNavigatorDanToc.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.bindingNavigatorDanToc.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigatorDanToc.Size = new System.Drawing.Size(353, 35);
+            this.bindingNavigatorDanToc.Size = new System.Drawing.Size(530, 54);
             this.bindingNavigatorDanToc.TabIndex = 2;
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
             this.bindingNavigatorCountItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 32);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(64, 49);
             this.bindingNavigatorCountItem.Text = "của {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Tổng số dòng trong danh sách";
             // 
@@ -226,7 +238,7 @@
             this.bindingNavigatorMoveFirstItem.Image = global::QuanLyHocSinh.Properties.Resources.dong_dau;
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorMoveFirstItem.Text = "Đến đầu danh sách";
             // 
             // bindingNavigatorMovePreviousItem
@@ -236,27 +248,28 @@
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorMovePreviousItem.Text = "Trở lại dòng trước";
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 35);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 54);
             // 
             // bindingNavigatorPositionItem
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 21);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(73, 31);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Vị trí hiện tại";
             // 
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 35);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 54);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -265,7 +278,7 @@
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorMoveNextItem.Text = "Tới dòng kế tiếp";
             // 
             // bindingNavigatorMoveLastItem
@@ -275,13 +288,13 @@
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorMoveLastItem.Text = "Đến cuối danh sách";
             // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 35);
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 54);
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -289,7 +302,7 @@
             this.bindingNavigatorAddNewItem.Image = global::QuanLyHocSinh.Properties.Resources.them;
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorAddNewItem.Text = "Thêm";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
@@ -299,7 +312,7 @@
             this.bindingNavigatorDeleteItem.Image = global::QuanLyHocSinh.Properties.Resources.xoa;
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorDeleteItem.Text = "Xóa";
             this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
@@ -309,7 +322,7 @@
             this.bindingNavigatorSaveItem.Image = global::QuanLyHocSinh.Properties.Resources.luu;
             this.bindingNavigatorSaveItem.Name = "bindingNavigatorSaveItem";
             this.bindingNavigatorSaveItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorSaveItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorSaveItem.Text = "Lưu";
             this.bindingNavigatorSaveItem.Click += new System.EventHandler(this.bindingNavigatorSaveItem_Click);
             // 
@@ -319,19 +332,20 @@
             this.bindingNavigatorExitItem.Image = global::QuanLyHocSinh.Properties.Resources.thoat;
             this.bindingNavigatorExitItem.Name = "bindingNavigatorExitItem";
             this.bindingNavigatorExitItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorExitItem.Size = new System.Drawing.Size(23, 32);
+            this.bindingNavigatorExitItem.Size = new System.Drawing.Size(34, 49);
             this.bindingNavigatorExitItem.Text = "Thoát";
             this.bindingNavigatorExitItem.Click += new System.EventHandler(this.bindingNavigatorExitItem_Click);
             // 
             // frmDanToc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 318);
+            this.ClientSize = new System.Drawing.Size(538, 489);
             this.ctxMenu.SetContextMenuEx(this, this.btnMenu);
             this.Controls.Add(this.groupBoxDanhSach);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmDanToc";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

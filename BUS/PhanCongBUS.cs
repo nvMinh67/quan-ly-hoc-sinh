@@ -61,6 +61,10 @@ namespace BUS
         {
             PhanCongDAO.Instance.ThemPhanCong(PhanCong);
         }
+        public string  ThemPhanCongCheck(PhanCongDTO PhanCong)
+        {
+            return PhanCongDAO.Instance.ThemPhanCongCheck(PhanCong);
+        }
 
         public void TimTheoTenLop(string tenLop)
         {
