@@ -58,11 +58,73 @@ namespace BUS
                     countRowDiem++;
                     STT[countRowHocSinh, countRowDiem] = int.Parse(rowDiem["STT"].ToString());
                     string loaiDiem = rowDiem["MaLoai"].ToString();
+                    string maMonHoc = rowDiem["MaMonHoc1"].ToString();
+                    
+                    string diem = rowDiem["Diem"].ToString();
 
-                    if (loaiDiem == "LD0001") diemMieng[soDiemMieng++] = rowDiem["Diem"].ToString();
-                    else if (loaiDiem == "LD0002") diem15Phut[soDiem15Phut++] = rowDiem["Diem"].ToString();
-                    else if (loaiDiem == "LD0003") diem45Phut[soDiem45Phut++] = rowDiem["Diem"].ToString();
-                    else if (loaiDiem == "LD0004") diemThi = rowDiem["Diem"].ToString();
+                    if (loaiDiem == "LD0001")
+                    {
+                        if (maMonHoc == "MH0009")
+                        {
+                            if (double.TryParse(rowDiem["Diem"].ToString(), out double diemSo))
+                            {
+                                diemMieng[soDiemMieng++] = (diemSo >= 5) ? "Đạt" : "Không Đạt";
+                            }
+                            else
+                            {
+                                // Gán lại điểm gốc nếu không thể parse
+                                diemMieng[soDiemMieng++] = rowDiem["Diem"].ToString();
+                            }
+                        }
+                    }
+                    else if (loaiDiem == "LD0002")
+                    {
+                        diem15Phut[soDiem15Phut++] = diem;
+
+                        if (maMonHoc == "MH0009")
+                        {
+                            if (double.TryParse(diem, out double diemSo))
+                            {
+                                diem15Phut[soDiem15Phut++] = (diemSo >= 5) ? "Đạt" : "Không Đạt";
+                            }
+                            else
+                            {
+                                diem15Phut[soDiem15Phut++] = diem;
+                            }
+                        }
+                    }
+                    else if (loaiDiem == "LD0003")
+                    {
+                        diem45Phut[soDiem45Phut++] = diem;
+
+                        if (maMonHoc == "MH0009")
+                        {
+                            if (double.TryParse(diem, out double diemSo))
+                            {
+                                diem45Phut[soDiem45Phut++] = (diemSo >= 5) ? "Đạt" : "Không Đạt";
+                            }
+                            else
+                            {
+                                diem45Phut[soDiem45Phut++] = diem;
+                            }
+                        }
+                    }
+                    else if (loaiDiem == "LD0004")
+                    {
+                        diemThi = diem;
+
+                        if (maMonHoc == "MH0009")
+                        {
+                            if (double.TryParse(diem, out double diemSo))
+                            {
+                                diemThi = (diemSo >= 5) ? "Đạt" : "Không Đạt";
+                            }
+                            else
+                            {
+                                diemThi = diem;
+                            }
+                        }
+                    }
                 }
 
                 rowHocSinh.Cells["colDiemMieng"].Value = UtilitiesBUS.ArrayToString(diemMieng, soDiemMieng);
