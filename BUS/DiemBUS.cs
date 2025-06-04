@@ -58,13 +58,13 @@ namespace BUS
                     countRowDiem++;
                     STT[countRowHocSinh, countRowDiem] = int.Parse(rowDiem["STT"].ToString());
                     string loaiDiem = rowDiem["MaLoai"].ToString();
-                    string maMonHoc = rowDiem["MaMonHoc1"].ToString();
+                    string tenMonHoc = rowDiem["TenMonHoc"].ToString();
                     
                     string diem = rowDiem["Diem"].ToString();
 
                     if (loaiDiem == "LD0001")
                     {
-                        if (maMonHoc == "MH0009")
+                        if (tenMonHoc != null && tenMonHoc.ToLower().Contains("thể dục"))
                         {
                             if (double.TryParse(rowDiem["Diem"].ToString(), out double diemSo))
                             {
@@ -79,9 +79,9 @@ namespace BUS
                     }
                     else if (loaiDiem == "LD0002")
                     {
-                        diem15Phut[soDiem15Phut++] = diem;
+                       
 
-                        if (maMonHoc == "MH0009")
+                        if (tenMonHoc != null && tenMonHoc.ToLower().Contains("thể dục"))
                         {
                             if (double.TryParse(diem, out double diemSo))
                             {
@@ -95,9 +95,9 @@ namespace BUS
                     }
                     else if (loaiDiem == "LD0003")
                     {
-                        diem45Phut[soDiem45Phut++] = diem;
+                       
 
-                        if (maMonHoc == "MH0009")
+                        if (tenMonHoc != null && tenMonHoc.ToLower().Contains("thể dục"))
                         {
                             if (double.TryParse(diem, out double diemSo))
                             {
@@ -111,9 +111,8 @@ namespace BUS
                     }
                     else if (loaiDiem == "LD0004")
                     {
-                        diemThi = diem;
-
-                        if (maMonHoc == "MH0009")
+                     
+                        if (tenMonHoc != null && tenMonHoc.ToLower().Contains("thể dục"))
                         {
                             if (double.TryParse(diem, out double diemSo))
                             {

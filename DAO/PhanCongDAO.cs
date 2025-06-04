@@ -32,40 +32,57 @@ namespace DAO
 
         public void ThemPhanCong(PhanCongDTO PhanCong)
         {
-                    string query = "EXEC ThemPhanCong @maNamHoc , @maLop , @maMonHoc , @maGiaoVien";
-                    object[] parameters = new object[] {
-                        PhanCong.MaNamHoc, PhanCong.MaLop, PhanCong.MaMonHoc, PhanCong.MaGiaoVien
-                    };
-                    DataProvider.Instance.ExecuteNonQuery(query, parameters);
-                }
-                public string ThemPhanCongCheck(PhanCongDTO phanCong)
-                {
-                    string checkQuery = @"
-                        SELECT COUNT(*) 
-                        FROM PhanCong 
-                        WHERE MaNamHoc = @maNamHoc 
-                          AND MaLop = @maLop 
-                          AND MaMonHoc = @maMonHoc";
+            string query = "EXEC ThemPhanCong @maNamHoc , @maLop , @maMonHoc , @maGiaoVien";
+            object[] parameters = new object[] {
+                PhanCong.MaNamHoc, PhanCong.MaLop, PhanCong.MaMonHoc, PhanCong.MaGiaoVien
+            };
+            DataProvider.Instance.ExecuteNonQuery(query, parameters);
+        }
+        public string ThemPhanCongCheck(PhanCongDTO phanCong)
+        {
+            string checkQuery = @"
+                SELECT COUNT(*) 
+                FROM PhanCong 
+                WHERE MaNamHoc = @maNamHoc 
+                    AND MaLop = @maLop 
+                    AND MaMonHoc = @maMonHoc";
 
-                    object[] checkParams = new object[] {
+            object[] checkParams = new object[] {
                 phanCong.MaNamHoc, phanCong.MaLop, phanCong.MaMonHoc
             };
 
-                    int count = (int)DataProvider.Instance.ExecuteScalar(checkQuery, checkParams);
+            int count = (int)DataProvider.Instance.ExecuteScalar(checkQuery, checkParams);
 
-                    if (count > 0)
+            if (count > 0)
+                {
+                    return "Phân công này đã tồn tại!";
+                }
+
+            string checkQuery2 = @"
+                SELECT COUNT(*) 
+                FROM PhanCong 
+                WHERE MaNamHoc = @maNamHoc 
+                    AND MaGiaoVien = @maGiaoVien";
+
+                    object[] checkParams2 = new object[] {
+                phanCong.MaNamHoc, phanCong.MaGiaoVien
+            };
+
+                    int count2 = (int)DataProvider.Instance.ExecuteScalar(checkQuery2, checkParams2);
+
+                    if (count2 >= 2)
                     {
-                        return "Phân công này đã tồn tại!";
+                        return "Giáo viên này đã được phân 2 môn trong học kỳ này!";
                     }
 
-                    string insertQuery = "EXEC ThemPhanCong @maNamHoc , @maLop , @maMonHoc , @maGiaoVien";
-                    object[] insertParams = new object[] {
+            string insertQuery = "EXEC ThemPhanCong @maNamHoc , @maLop , @maMonHoc , @maGiaoVien";
+                object[] insertParams = new object[] {
                 phanCong.MaNamHoc, phanCong.MaLop, phanCong.MaMonHoc, phanCong.MaGiaoVien
             };
 
-                    DataProvider.Instance.ExecuteNonQuery(insertQuery, insertParams);
-                    return "Thêm phân công thành công!";
-                }
+            DataProvider.Instance.ExecuteNonQuery(insertQuery, insertParams);
+            return "Thêm phân công thành công!";
+        }
 
         public DataTable TimTheoTenLop(string tenLop)
         {
