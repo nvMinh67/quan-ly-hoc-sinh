@@ -20,7 +20,7 @@ packages/
 *.log
 
 # DLL/EXE artifacts
-*.dll
+
 *.exe
 *.pdb
 
