@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.bsKQHSMH = new System.Windows.Forms.BindingSource(this.components);
             this.groupPanelDS = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.btnXem = new DevComponents.DotNetBar.ButtonX();
@@ -65,8 +65,9 @@
             this.groupPanelDS.Controls.Add(this.labelX0);
             this.groupPanelDS.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupPanelDS.Location = new System.Drawing.Point(0, 0);
+            this.groupPanelDS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupPanelDS.Name = "groupPanelDS";
-            this.groupPanelDS.Size = new System.Drawing.Size(792, 58);
+            this.groupPanelDS.Size = new System.Drawing.Size(1188, 89);
             // 
             // 
             // 
@@ -92,9 +93,10 @@
             // 
             this.btnXem.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnXem.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnXem.Location = new System.Drawing.Point(703, 16);
+            this.btnXem.Location = new System.Drawing.Point(1060, 25);
+            this.btnXem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 20);
+            this.btnXem.Size = new System.Drawing.Size(112, 31);
             this.btnXem.TabIndex = 5;
             this.btnXem.Text = "Xem";
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
@@ -105,17 +107,19 @@
             this.cmbMonHoc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbMonHoc.FormattingEnabled = true;
             this.cmbMonHoc.ItemHeight = 14;
-            this.cmbMonHoc.Location = new System.Drawing.Point(573, 16);
+            this.cmbMonHoc.Location = new System.Drawing.Point(860, 25);
+            this.cmbMonHoc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbMonHoc.Name = "cmbMonHoc";
-            this.cmbMonHoc.Size = new System.Drawing.Size(110, 20);
+            this.cmbMonHoc.Size = new System.Drawing.Size(163, 20);
             this.cmbMonHoc.TabIndex = 4;
             // 
             // labelX3
             // 
             this.labelX3.BackColor = System.Drawing.Color.Transparent;
-            this.labelX3.Location = new System.Drawing.Point(522, 16);
+            this.labelX3.Location = new System.Drawing.Point(783, 25);
+            this.labelX3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(54, 20);
+            this.labelX3.Size = new System.Drawing.Size(81, 31);
             this.labelX3.TabIndex = 0;
             this.labelX3.Text = "Môn học:";
             // 
@@ -125,18 +129,20 @@
             this.cmbLop.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbLop.FormattingEnabled = true;
             this.cmbLop.ItemHeight = 14;
-            this.cmbLop.Location = new System.Drawing.Point(392, 16);
+            this.cmbLop.Location = new System.Drawing.Point(588, 25);
+            this.cmbLop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbLop.Name = "cmbLop";
-            this.cmbLop.Size = new System.Drawing.Size(110, 20);
+            this.cmbLop.Size = new System.Drawing.Size(163, 20);
             this.cmbLop.TabIndex = 3;
             this.cmbLop.SelectedIndexChanged += new System.EventHandler(this.cmbLop_SelectedIndexChanged);
             // 
             // labelX2
             // 
             this.labelX2.BackColor = System.Drawing.Color.Transparent;
-            this.labelX2.Location = new System.Drawing.Point(366, 16);
+            this.labelX2.Location = new System.Drawing.Point(549, 25);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(30, 20);
+            this.labelX2.Size = new System.Drawing.Size(45, 31);
             this.labelX2.TabIndex = 0;
             this.labelX2.Text = "Lớp:";
             // 
@@ -146,17 +152,19 @@
             this.cmbHocKy.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbHocKy.FormattingEnabled = true;
             this.cmbHocKy.ItemHeight = 14;
-            this.cmbHocKy.Location = new System.Drawing.Point(236, 16);
+            this.cmbHocKy.Location = new System.Drawing.Point(354, 25);
+            this.cmbHocKy.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbHocKy.Name = "cmbHocKy";
-            this.cmbHocKy.Size = new System.Drawing.Size(110, 20);
+            this.cmbHocKy.Size = new System.Drawing.Size(163, 20);
             this.cmbHocKy.TabIndex = 2;
             // 
             // labelX1
             // 
             this.labelX1.BackColor = System.Drawing.Color.Transparent;
-            this.labelX1.Location = new System.Drawing.Point(194, 16);
+            this.labelX1.Location = new System.Drawing.Point(291, 25);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(45, 20);
+            this.labelX1.Size = new System.Drawing.Size(68, 31);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "Học kỳ:";
             // 
@@ -166,42 +174,46 @@
             this.cmbNamHoc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbNamHoc.FormattingEnabled = true;
             this.cmbNamHoc.ItemHeight = 14;
-            this.cmbNamHoc.Location = new System.Drawing.Point(64, 16);
+            this.cmbNamHoc.Location = new System.Drawing.Point(96, 25);
+            this.cmbNamHoc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbNamHoc.Name = "cmbNamHoc";
-            this.cmbNamHoc.Size = new System.Drawing.Size(110, 20);
+            this.cmbNamHoc.Size = new System.Drawing.Size(163, 20);
             this.cmbNamHoc.TabIndex = 1;
             this.cmbNamHoc.SelectedIndexChanged += new System.EventHandler(this.cmbNamHoc_SelectedIndexChanged);
             // 
             // labelX0
             // 
             this.labelX0.BackColor = System.Drawing.Color.Transparent;
-            this.labelX0.Location = new System.Drawing.Point(12, 16);
+            this.labelX0.Location = new System.Drawing.Point(18, 25);
+            this.labelX0.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX0.Name = "labelX0";
-            this.labelX0.Size = new System.Drawing.Size(55, 20);
+            this.labelX0.Size = new System.Drawing.Size(82, 31);
             this.labelX0.TabIndex = 0;
             this.labelX0.Text = "Năm học:";
             // 
             // rpvKQHSMH
             // 
             this.rpvKQHSMH.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource.Name = "KQHSMonHocDTO";
-            reportDataSource.Value = this.bsKQHSMH;
-            this.rpvKQHSMH.LocalReport.DataSources.Add(reportDataSource);
+            reportDataSource1.Name = "KQHSMonHocDTO";
+            reportDataSource1.Value = this.bsKQHSMH;
+            this.rpvKQHSMH.LocalReport.DataSources.Add(reportDataSource1);
             this.rpvKQHSMH.LocalReport.ReportEmbeddedResource = "QuanLyHocSinh.Reports.rptKQHSMonHoc.rdlc";
-            this.rpvKQHSMH.Location = new System.Drawing.Point(0, 58);
+            this.rpvKQHSMH.Location = new System.Drawing.Point(0, 89);
+            this.rpvKQHSMH.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rpvKQHSMH.Name = "rpvKQHSMH";
             this.rpvKQHSMH.ServerReport.BearerToken = null;
-            this.rpvKQHSMH.Size = new System.Drawing.Size(792, 408);
+            this.rpvKQHSMH.Size = new System.Drawing.Size(1188, 628);
             this.rpvKQHSMH.TabIndex = 2;
             // 
             // frmKQHSMonHoc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 466);
+            this.ClientSize = new System.Drawing.Size(1188, 717);
             this.Controls.Add(this.rpvKQHSMH);
             this.Controls.Add(this.groupPanelDS);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmKQHSMonHoc";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

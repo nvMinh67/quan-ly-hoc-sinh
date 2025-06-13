@@ -534,5 +534,9 @@ namespace QuanLyHocSinh
             btnDoTuoi.Enabled = false;
         }
 
+        private void ribbonTabThongKe_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

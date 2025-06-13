@@ -76,6 +76,11 @@ namespace BUS
                                 diemMieng[soDiemMieng++] = rowDiem["Diem"].ToString();
                             }
                         }
+                        else
+                        {
+                        
+                            diemMieng[soDiemMieng++] = rowDiem["Diem"].ToString();
+                        }
                     }
                     else if (loaiDiem == "LD0002")
                     {
@@ -91,6 +96,11 @@ namespace BUS
                             {
                                 diem15Phut[soDiem15Phut++] = diem;
                             }
+                        }
+                        else
+                        {
+
+                            diem15Phut[soDiem15Phut++] = rowDiem["Diem"].ToString();
                         }
                     }
                     else if (loaiDiem == "LD0003")
@@ -108,6 +118,10 @@ namespace BUS
                                 diem45Phut[soDiem45Phut++] = diem;
                             }
                         }
+                        else
+                        {
+                            diem45Phut[soDiem45Phut++] = diem;
+                        }
                     }
                     else if (loaiDiem == "LD0004")
                     {
@@ -122,6 +136,10 @@ namespace BUS
                             {
                                 diemThi = diem;
                             }
+                        }
+                        else
+                        {
+                            diemThi = diem;
                         }
                     }
                 }

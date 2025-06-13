@@ -1,5 +1,7 @@
 ﻿using DTO;
+using System;
 using System.Data;
+using System.Runtime.Remoting.Messaging;
 
 namespace DAO
 {
@@ -23,11 +25,15 @@ namespace DAO
         {
             string query = "EXEC ReportKQHSMonHoc @maLop , @maNamHoc , @maMonHoc , @maHocKy";
             object[] parameters = new object[] { maLop, maNamHoc, maMonHoc, maHocKy };
-            return DataProvider.Instance.ExecuteQuery(query, parameters);
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, parameters);
+            string hahah = "Haaaa";
+            return result;
         }
 
         public void LuuKetQua(KQHSMonHocDTO ketQua)
         {
+            float diemTBHK = (ketQua.DiemMiengTB + ketQua.Diem15PhutTB + (ketQua.Diem45PhutTB * 2) + (ketQua.DiemThi * 3)) / 7;
+            diemTBHK = (float)Math.Round(diemTBHK, 1);
             string query = "EXEC ThemKQHSMonHoc @maHocSinh , @maLop , @maNamHoc , @maMonHoc , @maHocKy , @diemMiengTB , @diem15PhutTB , @diem45PhutTB , @diemThi , @diemTBHK";
             object[] parameters = new object[] {
                 ketQua.HocSinh.MaHocSinh,
@@ -39,7 +45,8 @@ namespace DAO
                 ketQua.Diem15PhutTB,
                 ketQua.Diem45PhutTB,
                 ketQua.DiemThi,
-                ketQua.DiemTBHK 
+                diemTBHK
+                //ketQua.DiemTBHK 
             };
             DataProvider.Instance.ExecuteQuery(query, parameters);
         }
