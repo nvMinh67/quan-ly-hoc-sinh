@@ -327,9 +327,9 @@ namespace QuanLyHocSinh
             btnDanhSachHocSinh.Enabled = false;
             btnHoSoLopHoc.Enabled = false;
 
-            btnSiSo.Enabled = false;
-            btnDiemDat.Enabled = false;
-            btnDoTuoi.Enabled = false;
+            //btnSiSo.Enabled = false;
+            //btnDiemDat.Enabled = false;
+            //btnDoTuoi.Enabled = false;
         }
         #endregion
 
@@ -376,9 +376,9 @@ namespace QuanLyHocSinh
             btnDanhSachHocSinh.Enabled = true;
             btnHoSoLopHoc.Enabled = true;
 
-            btnSiSo.Enabled = true;
-            btnDiemDat.Enabled = true;
-            btnDoTuoi.Enabled = true;
+            //btnSiSo.Enabled = true;
+            //btnDiemDat.Enabled = true;
+            //btnDoTuoi.Enabled = true;
         }
         #endregion
 
@@ -426,9 +426,9 @@ namespace QuanLyHocSinh
             btnGiaoVien.Enabled = false;
             btnPhanCong.Enabled = false;
 
-            btnSiSo.Enabled = false;
-            btnDiemDat.Enabled = false;
-            btnDoTuoi.Enabled = false;
+            //btnSiSo.Enabled = false;
+            //btnDiemDat.Enabled = false;
+            //btnDoTuoi.Enabled = false;
         }
         #endregion
 
@@ -476,9 +476,9 @@ namespace QuanLyHocSinh
             btnGiaoVien.Enabled = false;
             btnPhanCong.Enabled = false;
 
-            btnSiSo.Enabled = false;
-            btnDiemDat.Enabled = false;
-            btnDoTuoi.Enabled = false;
+            //btnSiSo.Enabled = false;
+            //btnDiemDat.Enabled = false;
+            //btnDoTuoi.Enabled = false;
         }
         #endregion
 
@@ -529,12 +529,17 @@ namespace QuanLyHocSinh
             btnGiaoVien.Enabled = false;
             btnPhanCong.Enabled = false;
 
-            btnSiSo.Enabled = false;
-            btnDiemDat.Enabled = false;
-            btnDoTuoi.Enabled = false;
+            //btnSiSo.Enabled = false;
+            //btnDiemDat.Enabled = false;
+            //btnDoTuoi.Enabled = false;
         }
 
         private void ribbonTabThongKe_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ribbonTabQuanLy_Click(object sender, EventArgs e)
         {
 
         }

@@ -29,8 +29,8 @@ namespace QuanLyHocSinh
             string stt = Utilities.LaySTT(dgvMonHoc.Rows.Count + 1);
             dataRow["MaMonHoc"] = "MH" + stt;
             dataRow["TenMonHoc"] = "";
-            dataRow["SoTiet"] = 0;
-            dataRow["HeSo"] = 0;
+            //dataRow["SoTiet"] = 0;
+            //dataRow["HeSo"] = 0;
 
             dataTable.Rows.Add(dataRow);
             bindingSource.MoveLast();
@@ -49,28 +49,65 @@ namespace QuanLyHocSinh
             ) bindingNavigatorMonHoc.BindingSource.RemoveCurrent();
         }
 
+        //private void bindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        //{
+        //    string[] colNames = { "colMaMonHoc", "colTenMonHoc"};
+        //    if (KiemTraTruocKhiLuu.KiemTraDataGridView(dgvMonHoc, colNames)
+        //        //&&
+        //        //KiemTraTruocKhiLuu.KiemTraHeSo(dgvMonHoc, "colHeSo")
+        //        )
+        //    {
+        //        bindingNavigatorPositionItem.Focus();
+        //        BindingSource bindingSource = bindingNavigatorMonHoc.BindingSource;
+        //        DataTable input = bindingSource.DataSource;
+        //        MonHocBUS.Instance.CapNhatMonHoc(input);
+
+        //        MessageBox.Show(
+        //            "Dữ liệu đã được lưu vào CSDL",
+        //            "Cập nhật thành công",
+        //            MessageBoxButtons.OK,
+        //            MessageBoxIcon.Information
+        //        );
+        //    }
+        //}
         private void bindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            string[] colNames = { "colMaMonHoc", "colTenMonHoc", "colSoTiet" };
-            if (KiemTraTruocKhiLuu.KiemTraDataGridView(dgvMonHoc, colNames) &&
-                KiemTraTruocKhiLuu.KiemTraHeSo(dgvMonHoc, "colHeSo"))
+            string[] colNames = { "colMaMonHoc", "colTenMonHoc" };
+
+            if (KiemTraTruocKhiLuu.KiemTraDataGridView(dgvMonHoc, colNames)
+                //&& KiemTraTruocKhiLuu.KiemTraHeSo(dgvMonHoc, "colHeSo")
+                )
             {
                 bindingNavigatorPositionItem.Focus();
-                BindingSource bindingSource = bindingNavigatorMonHoc.BindingSource;
-                MonHocBUS.Instance.CapNhatMonHoc((DataTable)bindingSource.DataSource);
 
-                MessageBox.Show(
-                    "Dữ liệu đã được lưu vào CSDL",
-                    "Cập nhật thành công",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                BindingSource bindingSource = bindingNavigatorMonHoc.BindingSource;
+                DataTable input = bindingSource.DataSource as DataTable;
+                input.Columns.Add("SoTiet", typeof(int));     // thêm dòng này
+                input.Columns.Add("HeSo", typeof(int));       // và dòng này nếu dùng
+
+                if (input != null)
+                {
+                    MonHocBUS.Instance.CapNhatMonHoc(input);
+
+                    MessageBox.Show(
+                        "Dữ liệu đã được lưu vào CSDL",
+                        "Cập nhật thành công",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
             }
         }
+
 
         private void bindingNavigatorExitItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dgvMonHoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

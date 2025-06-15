@@ -20,7 +20,7 @@ namespace DAO
 
         public DataTable LayDanhSachMonHoc()
         {
-            string query = "SELECT * FROM MONHOC";
+            string query = "SELECT MaMonHoc, TenMonHoc FROM MONHOC";
             return DataProvider.Instance.ExecuteQuery(query);
         }
 

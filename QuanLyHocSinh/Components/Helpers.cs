@@ -1,5 +1,6 @@
 ﻿using BUS;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace QuanLyHocSinh
@@ -31,11 +32,42 @@ namespace QuanLyHocSinh
 
     public static class KiemTraTruocKhiLuu
     {
+        //public static bool KiemTraDataGridView(DataGridView dataGridView, string[] colNames)
+        //{
+        //    foreach (DataGridViewRow row in dataGridView.Rows)
+        //    {
+        //        foreach (string col in colNames)
+        //        {
+        //            if (row.Cells[col].Value != null)
+        //            {
+        //                string str = row.Cells[col].Value.ToString();
+        //                if (string.IsNullOrWhiteSpace(str))
+        //                {
+        //                    MessageBox.Show(
+        //                        "Giá trị của ô không được rỗng !",
+        //                        "ERROR",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Error
+        //                    );
+        //                    return false;
+        //                }
+        //        }
+        //    }
+        //    }
+        //    return true;
+        //}
+
         public static bool KiemTraDataGridView(DataGridView dataGridView, string[] colNames)
         {
+            // Chỉ lấy 2 cột đầu tiên từ colNames
+            string[] columnsToCheck = colNames.Take(2).ToArray();
+
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                foreach (string col in colNames)
+                // Bỏ qua hàng mặc định cuối cùng (NewRow)
+                if (row.IsNewRow) continue;
+
+                foreach (string col in columnsToCheck)
                 {
                     if (row.Cells[col].Value != null)
                     {
@@ -43,7 +75,7 @@ namespace QuanLyHocSinh
                         if (string.IsNullOrWhiteSpace(str))
                         {
                             MessageBox.Show(
-                                "Giá trị của ô không được rỗng !",
+                                $"Ô tại hàng {row.Index + 1}, cột '{col}' không được để trống!",
                                 "ERROR",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error
@@ -51,10 +83,22 @@ namespace QuanLyHocSinh
                             return false;
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show(
+                            $"Ô tại hàng {row.Index + 1}, cột '{col}' không được null!",
+                            "ERROR",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        return false;
+                    }
                 }
             }
+
             return true;
         }
+
 
         public static bool KiemTraDiem(DataGridView dataGridView, string[] colNames)
         {
@@ -135,6 +179,8 @@ namespace QuanLyHocSinh
 
         public static bool KiemTraHeSo(DataGridView dataGridView, string colHeSo)
         {
+            return true;
+
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
                 if (row.Cells[colHeSo].Value != null)
